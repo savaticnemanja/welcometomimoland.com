@@ -27,6 +27,13 @@ else
     echo "  installed"
 fi
 
+# ── 1b. rate-limit zone ───────────────────────────────────────────────
+# http{} context, so it cannot live in the vhost. Consumed by the limit_req in
+# the /api/contact location.
+say "installing conf.d/mimoland-ratelimit.conf"
+install -m 0644 -o root -g root "$SRC/mimoland-ratelimit.conf" /etc/nginx/conf.d/mimoland-ratelimit.conf
+echo "  installed"
+
 # ── 2. the vhost, with rollback ───────────────────────────────────────
 say "installing vhost (was: static root /var/www/welcometomimoland.com)"
 VHOST=/etc/nginx/sites-available/welcometomimoland.com
@@ -45,6 +52,7 @@ if nginx -t; then
 else
     echo "  FAILED — restoring previous vhost, nginx NOT reloaded" >&2
     cp -a "$BACKUP" "$VHOST"
+    rm -f /etc/nginx/conf.d/mimoland-ratelimit.conf
     nginx -t >/dev/null 2>&1 && echo "  rollback verified" >&2
     exit 1
 fi

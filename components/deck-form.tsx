@@ -10,6 +10,10 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export function DeckForm() {
   const id = useId();
   const [sent, setSent] = useState<null | "posted" | "mail">(null);
+  // What the handler said when it refused, when it said anything useful.
+  const [failure, setFailure] = useState<string | null>(null);
+  // Set once, on mount, and read at submit — see `elapsed` below.
+  const mountedAt = useRef(Date.now());
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [failed, setFailed] = useState(false);
@@ -83,12 +87,28 @@ export function DeckForm() {
       try {
         const res = await fetch(site.formEndpoint, {
           method: "POST",
-          headers: { Accept: "application/json" },
-          body: data,
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          // JSON rather than the FormData object: the handler parses one
+          // shape, and multipart would mean a parser it does not need. The
+          // honeypot goes along so the server sees it too — the check above
+          // only stops the polite ones.
+          body: JSON.stringify({
+            name,
+            email,
+            interest,
+            company: String(data.get("company") ?? ""),
+            // How long the form was on screen before it was sent. A human
+            // cannot read and fill this in under a few seconds; a script can.
+            elapsed: Date.now() - mountedAt.current,
+          }),
         });
-        if (!res.ok) throw new Error(String(res.status));
+        const payload = await res.json().catch(() => null);
+        if (!res.ok) throw new Error(payload?.error ?? String(res.status));
         setSent("posted");
-      } catch {
+      } catch (err) {
+        // The handler explains refusals in words meant for a visitor, so show
+        // its message when there is one rather than a generic failure.
+        setFailure(err instanceof Error && err.message && !/^\d+$/.test(err.message) ? err.message : null);
         setFailed(true);
       } finally {
         setBusy(false);
@@ -178,11 +198,18 @@ export function DeckForm() {
 
       {failed && (
         <p className="err" role="alert" style={{ paddingLeft: 0, textAlign: "center" }}>
-          That did not go through. Please email{" "}
-          <a href={`mailto:${site.email}`} style={{ textDecoration: "underline" }}>
-            {site.email}
-          </a>{" "}
-          instead.
+          {/* The handler refuses in sentences meant to be read by whoever is
+              standing at the form — "That name looks a little short", not a
+              status code. When it gave us one, it is more use than ours. */}
+          {failure ?? (
+            <>
+              That did not go through. Please email{" "}
+              <a href={`mailto:${site.email}`} style={{ textDecoration: "underline" }}>
+                {site.email}
+              </a>{" "}
+              instead.
+            </>
+          )}
         </p>
       )}
 

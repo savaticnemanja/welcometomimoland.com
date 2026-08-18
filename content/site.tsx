@@ -17,7 +17,10 @@ export const site = {
   filmTitle: "Mimoland: The First Flight",
   heroVideo: "hero-loop" as string | null,
   deckUrl: null as string | null,
-  formEndpoint: null as string | null,
+  // The contact handler, served from the same origin by the host nginx
+  // (see deploy/). Set to null and the form degrades to a mailto: link
+  // instead, which is what it did before the handler existed.
+  formEndpoint: "/api/contact" as string | null,
 } as const;
 
 export const enquiryTypes = [

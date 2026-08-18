@@ -6,13 +6,26 @@ nginx, in the same shape as the other apps on that box.
 ```
 /srv/welcometomimoland.com/
 ├── docker-compose.yml     ← deploy/docker-compose.server.yml
+├── .env                   ← Resend key; never committed, 0640 nemanjas:developers
 ├── deploy/                ← copies of this directory
 └── src/                   ← this repo (main), cloned, owned by `deploy`
 ```
 
-The container publishes on `127.0.0.1:8088`. The loopback prefix is what keeps
-it off the internet — Docker writes its own iptables rules below UFW, so a
-port published on `0.0.0.0` is reachable even when the firewall says closed.
+Two containers:
+
+| service | port | what it is |
+| --- | --- | --- |
+| `app` | `127.0.0.1:8088` | nginx serving the static export |
+| `api` | `127.0.0.1:8089` | the contact handler, `POST /api/contact` only |
+
+They are separate because the site needs no runtime at all and the handler is
+the one route that cannot be a file. Split this way the site stays up whether
+or not the mail path is healthy, and neither container needs a supervisor to
+hold two daemons. The host nginx joins them back into one origin.
+
+The loopback prefix on both is what keeps them off the internet — Docker
+writes its own iptables rules below UFW, so a port published on `0.0.0.0` is
+reachable even when the firewall says closed.
 
 ## What is in the image
 
@@ -21,8 +34,27 @@ files and nothing needs Node at runtime. The runtime stage is therefore a
 plain `nginx:alpine` holding the export plus two config files — no
 `node_modules`, no application process.
 
-There is **no `.env`**, unlike the other apps on the box. A static site has no
-credentials to pass in, so there is nothing to configure at runtime.
+`.env` holds the Resend key and is read only by the `api` service; the static
+site needs nothing. Mode 0640 `nemanjas:developers` — the group matters,
+because the deploy hook runs as `deploy` and compose cannot read a 0600 file.
+
+## The form
+
+`content/site.tsx` sets `formEndpoint` to `/api/contact`. Set it back to `null`
+and the deck form degrades to a `mailto:` link, which is what it did before the
+handler existed — worth knowing, because that is the fallback if the `api`
+container is ever taken out.
+
+A submission sends two messages: the enquiry to `partnerships@`, and a branded
+acknowledgement back to the visitor ("Your message has landed"). The enquiry
+goes first and its failure is the one that fails the request; a failed
+acknowledgement is logged and swallowed, because the message did arrive and
+saying otherwise would be false.
+
+Defence in depth, outermost first: nginx `limit_req` at 10r/m, then the
+handler's own per-IP and global sliding windows, an origin allowlist, a
+honeypot field answered with a plain `200` so it learns nothing, a minimum
+time-on-form, and a 32 KB body cap.
 
 `deploy/cache.conf` is included by the container nginx rather than the host, so
 a push that changes the cache policy takes effect on the next deploy with no

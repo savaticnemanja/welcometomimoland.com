@@ -13,7 +13,10 @@ git fetch --prune origin "$BRANCH"
 git reset --hard "origin/$BRANCH"
 
 cd "$ROOT"
-docker compose build app
+# Both services, not just `app`. The stack is the static site and the contact
+# handler, built from the same context at different targets; naming one here
+# is how the other silently stops being redeployed.
+docker compose build
 docker compose up -d --remove-orphans
 
 # Drop the previous image layers so the disk does not creep. This one matters
