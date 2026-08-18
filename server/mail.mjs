@@ -105,8 +105,8 @@ function composeAck(submission) {
     '',
     'Your message has landed.',
     '',
-    'Thank you for reaching out and joining us on the Mimoland journey.',
-    "We'll be in touch soon.",
+    'Thank you for reaching out and for your interest in Mimoland.',
+    "We’ll be in touch soon.",
     '',
     '—',
     'partnerships@welcometomimoland.com · https://welcometomimoland.com',
@@ -124,7 +124,7 @@ function composeAck(submission) {
 <body style="margin:0;padding:0;width:100%;background-color:${NAVY};">
 <!-- Preheader: the line the inbox shows next to the subject. Hidden in the
      body so it is not said twice to someone who opens the mail. -->
-<div style="display:none;max-height:0;max-width:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:${NAVY};mso-hide:all;">Thank you for reaching out and joining us on the Mimoland journey. We&#39;ll be in touch soon.</div>
+<div style="display:none;max-height:0;max-width:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:${NAVY};mso-hide:all;">Thank you for reaching out and for your interest in Mimoland. We&rsquo;ll be in touch soon.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${NAVY}" style="background-color:${NAVY};border-collapse:collapse;">
 <tr>
 <td align="center" style="padding:40px 16px;">
@@ -157,7 +157,7 @@ ${gap(20)}
      no font to measure against here, because whichever serif answers the
      stack is the reader's and not ours. Authored breaks hold everywhere, and
      cost nothing: on a phone the lines simply wrap again underneath them. -->
-<div style="font-family:${SERIF};font-size:17px;line-height:1.75;color:${SOFT};">Thank you for reaching out and<br />joining us on the Mimoland journey.<br />We&#39;ll be in touch soon.</div>
+<div style="font-family:${SERIF};font-size:17px;line-height:1.75;color:${SOFT};">Thank you for reaching out and<br />for your interest in Mimoland.<br />We&rsquo;ll be in touch soon.</div>
 
 </td>
 </tr>

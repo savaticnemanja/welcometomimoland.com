@@ -27,7 +27,11 @@ export function DeckForm() {
   if (sent) {
     return (
       <div className="thanks" role="status" tabIndex={-1} ref={thanksRef}>
-        <h3>Thank you — we’ll be in touch shortly.</h3>
+        <h3>
+          {sent === "posted"
+            ? "Your message has landed."
+            : "Thank you — we’ll be in touch shortly."}
+        </h3>
         {site.deckUrl && (
           <p>
             <a className="btn btn-gold" href={site.deckUrl} target="_blank" rel="noopener">
@@ -37,12 +41,8 @@ export function DeckForm() {
         )}
         {sent === "posted" ? (
           <p>
-            The deck usually goes out within one working day. If it has not
-            arrived, write to{" "}
-            <a href={`mailto:${site.email}`} style={{ color: "var(--gold)" }}>
-              {site.email}
-            </a>
-            .
+            Thank you for reaching out and for your interest in Mimoland.
+            We’ll be in touch soon.
           </p>
         ) : (
           <p>
