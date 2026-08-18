@@ -27,7 +27,7 @@ export function DeckForm() {
   if (sent) {
     return (
       <div className="thanks" role="status" tabIndex={-1} ref={thanksRef}>
-        <h3>Thank you — we’ll be in touch shortly. ✦</h3>
+        <h3>Thank you — we’ll be in touch shortly.</h3>
         {site.deckUrl && (
           <p>
             <a className="btn btn-gold" href={site.deckUrl} target="_blank" rel="noopener">
