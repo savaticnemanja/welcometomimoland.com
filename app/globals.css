@@ -1204,7 +1204,6 @@ a.trailer:hover .play{
 .deck-form .btn{width:100%;padding:var(--sp-4) var(--sp-6);font-size:var(--fs-md)}
 
 .deck-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.form-note{font-size:var(--fs-xs);color:var(--sky-5);margin:var(--sp-4) auto 0;max-width:44ch;line-height:1.5;text-align:center}
 
 .or-label{
   margin:var(--sp-6) auto 0;color:#7d8fab;

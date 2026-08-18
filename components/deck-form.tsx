@@ -213,9 +213,6 @@ export function DeckForm() {
         </p>
       )}
 
-      <p className="form-note">
-        We use your details only to send the deck and reply to your enquiry.
-      </p>
     </form>
   );
 }
