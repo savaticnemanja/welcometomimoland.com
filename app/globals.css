@@ -985,6 +985,10 @@ a.trailer:hover .play{
   display:flex;flex-direction:column;align-items:center;gap:var(--sp-3);
   padding:0 var(--sp-5);
 }
+/* Splits News from TV. The padding above already holds them apart; this is
+   what says the gap is a division rather than slack. On the adjacent group
+   rather than between-every-child, so a third kind would inherit it too. */
+.media-group + .media-group{border-left:1px solid var(--line-dark)}
 
 .media-kind{
   display:inline-flex;align-items:center;gap:var(--sp-2);
@@ -1435,7 +1439,12 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 
   .media-groups{grid-template-columns:1fr}
   .media-group{padding:0}
-  .media-group + .media-group{margin-top:var(--sp-5)}
+  /* One column now, so the rule lies down: the left border would sit
+     against the screen edge and read as a stray mark. */
+  .media-group + .media-group{
+    border-left:0;border-top:1px solid var(--line-dark);
+    margin-top:var(--sp-5);padding-top:var(--sp-5);
+  }
   .team-grid{grid-template-columns:1fr;gap:var(--sp-5)}
   .member{
     display:grid;grid-template-columns:104px 1fr;column-gap:var(--sp-4);
