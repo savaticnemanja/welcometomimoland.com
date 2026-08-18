@@ -1,0 +1,194 @@
+{
+  "book-cover": {
+    "src": "/images/book-cover-393.webp",
+    "srcSet": "/images/book-cover-320.webp 320w, /images/book-cover-393.webp 393w",
+    "width": 393,
+    "height": 491
+  },
+  "char-luc": {
+    "src": "/images/char-luc-850.webp",
+    "srcSet": "/images/char-luc-320.webp 320w, /images/char-luc-640.webp 640w, /images/char-luc-850.webp 850w",
+    "width": 850,
+    "height": 478
+  },
+  "char-mimo": {
+    "src": "/images/char-mimo-950.webp",
+    "srcSet": "/images/char-mimo-320.webp 320w, /images/char-mimo-640.webp 640w, /images/char-mimo-950.webp 950w",
+    "width": 950,
+    "height": 534
+  },
+  "char-miri": {
+    "src": "/images/char-miri-850.webp",
+    "srcSet": "/images/char-miri-320.webp 320w, /images/char-miri-640.webp 640w, /images/char-miri-850.webp 850w",
+    "width": 850,
+    "height": 478
+  },
+  "char-the-fairie": {
+    "src": "/images/char-the-fairie-850.webp",
+    "srcSet": "/images/char-the-fairie-320.webp 320w, /images/char-the-fairie-640.webp 640w, /images/char-the-fairie-850.webp 850w",
+    "width": 850,
+    "height": 478
+  },
+  "char-the-mimos": {
+    "src": "/images/char-the-mimos-800.webp",
+    "srcSet": "/images/char-the-mimos-320.webp 320w, /images/char-the-mimos-640.webp 640w, /images/char-the-mimos-800.webp 800w",
+    "width": 800,
+    "height": 1066
+  },
+  "char-zuzu": {
+    "src": "/images/char-zuzu-850.webp",
+    "srcSet": "/images/char-zuzu-320.webp 320w, /images/char-zuzu-640.webp 640w, /images/char-zuzu-850.webp 850w",
+    "width": 850,
+    "height": 552
+  },
+  "community-book-circle": {
+    "src": "/images/community-book-circle-1600.webp",
+    "srcSet": "/images/community-book-circle-320.webp 320w, /images/community-book-circle-640.webp 640w, /images/community-book-circle-960.webp 960w, /images/community-book-circle-1280.webp 1280w, /images/community-book-circle-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-book-group": {
+    "src": "/images/community-book-group-1600.webp",
+    "srcSet": "/images/community-book-group-320.webp 320w, /images/community-book-group-640.webp 640w, /images/community-book-group-960.webp 960w, /images/community-book-group-1280.webp 1280w, /images/community-book-group-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-classroom-gifts": {
+    "src": "/images/community-classroom-gifts-1600.webp",
+    "srcSet": "/images/community-classroom-gifts-320.webp 320w, /images/community-classroom-gifts-640.webp 640w, /images/community-classroom-gifts-960.webp 960w, /images/community-classroom-gifts-1280.webp 1280w, /images/community-classroom-gifts-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-fairy-reading": {
+    "src": "/images/community-fairy-reading-1600.webp",
+    "srcSet": "/images/community-fairy-reading-320.webp 320w, /images/community-fairy-reading-640.webp 640w, /images/community-fairy-reading-960.webp 960w, /images/community-fairy-reading-1280.webp 1280w, /images/community-fairy-reading-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-hall-gathering": {
+    "src": "/images/community-hall-gathering-1600.webp",
+    "srcSet": "/images/community-hall-gathering-320.webp 320w, /images/community-hall-gathering-640.webp 640w, /images/community-hall-gathering-960.webp 960w, /images/community-hall-gathering-1280.webp 1280w, /images/community-hall-gathering-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-library-session": {
+    "src": "/images/community-library-session-1600.webp",
+    "srcSet": "/images/community-library-session-320.webp 320w, /images/community-library-session-640.webp 640w, /images/community-library-session-960.webp 960w, /images/community-library-session-1280.webp 1280w, /images/community-library-session-1600.webp 1600w",
+    "width": 1600,
+    "height": 1066
+  },
+  "community-pillow-gift": {
+    "src": "/images/community-pillow-gift-1600.webp",
+    "srcSet": "/images/community-pillow-gift-320.webp 320w, /images/community-pillow-gift-640.webp 640w, /images/community-pillow-gift-960.webp 960w, /images/community-pillow-gift-1280.webp 1280w, /images/community-pillow-gift-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-pillow-group": {
+    "src": "/images/community-pillow-group-1600.webp",
+    "srcSet": "/images/community-pillow-group-320.webp 320w, /images/community-pillow-group-640.webp 640w, /images/community-pillow-group-960.webp 960w, /images/community-pillow-group-1280.webp 1280w, /images/community-pillow-group-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-theatre-cast": {
+    "src": "/images/community-theatre-cast-1600.webp",
+    "srcSet": "/images/community-theatre-cast-320.webp 320w, /images/community-theatre-cast-640.webp 640w, /images/community-theatre-cast-960.webp 960w, /images/community-theatre-cast-1280.webp 1280w, /images/community-theatre-cast-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "community-theatre-scene": {
+    "src": "/images/community-theatre-scene-1600.webp",
+    "srcSet": "/images/community-theatre-scene-320.webp 320w, /images/community-theatre-scene-640.webp 640w, /images/community-theatre-scene-960.webp 960w, /images/community-theatre-scene-1280.webp 1280w, /images/community-theatre-scene-1600.webp 1600w",
+    "width": 1600,
+    "height": 1067
+  },
+  "cta-bg": {
+    "src": "/images/cta-bg-1500.webp",
+    "srcSet": "/images/cta-bg-320.webp 320w, /images/cta-bg-640.webp 640w, /images/cta-bg-960.webp 960w, /images/cta-bg-1280.webp 1280w, /images/cta-bg-1500.webp 1500w",
+    "width": 1500,
+    "height": 837
+  },
+  "film-still": {
+    "src": "/images/film-still-1500.webp",
+    "srcSet": "/images/film-still-320.webp 320w, /images/film-still-640.webp 640w, /images/film-still-960.webp 960w, /images/film-still-1280.webp 1280w, /images/film-still-1500.webp 1500w",
+    "width": 1500,
+    "height": 843
+  },
+  "hero-bg": {
+    "src": "/images/hero-bg-1500.webp",
+    "srcSet": "/images/hero-bg-320.webp 320w, /images/hero-bg-640.webp 640w, /images/hero-bg-960.webp 960w, /images/hero-bg-1280.webp 1280w, /images/hero-bg-1500.webp 1500w",
+    "width": 1500,
+    "height": 843
+  },
+  "opportunity-bg": {
+    "src": "/images/opportunity-bg-1200.webp",
+    "srcSet": "/images/opportunity-bg-320.webp 320w, /images/opportunity-bg-640.webp 640w, /images/opportunity-bg-960.webp 960w, /images/opportunity-bg-1200.webp 1200w",
+    "width": 1200,
+    "height": 672
+  },
+  "origins-first-mimo": {
+    "src": "/images/origins-first-mimo-960.webp",
+    "srcSet": "/images/origins-first-mimo-320.webp 320w, /images/origins-first-mimo-640.webp 640w, /images/origins-first-mimo-960.webp 960w",
+    "width": 960,
+    "height": 1344
+  },
+  "origins-jasna-uniform": {
+    "src": "/images/origins-jasna-uniform-222.webp",
+    "srcSet": "/images/origins-jasna-uniform-222.webp 222w",
+    "width": 222,
+    "height": 286
+  },
+  "poster-first-flight": {
+    "src": "/images/poster-first-flight-860.webp",
+    "srcSet": "/images/poster-first-flight-320.webp 320w, /images/poster-first-flight-640.webp 640w, /images/poster-first-flight-860.webp 860w",
+    "width": 860,
+    "height": 1540
+  },
+  "team-ana-grigorjev": {
+    "src": "/images/team-ana-grigorjev-600.webp",
+    "srcSet": "/images/team-ana-grigorjev-320.webp 320w, /images/team-ana-grigorjev-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-harold-underdown": {
+    "src": "/images/team-harold-underdown-600.webp",
+    "srcSet": "/images/team-harold-underdown-320.webp 320w, /images/team-harold-underdown-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-jasna-dragojevic": {
+    "src": "/images/team-jasna-dragojevic-600.webp",
+    "srcSet": "/images/team-jasna-dragojevic-320.webp 320w, /images/team-jasna-dragojevic-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-jimmy-woolley": {
+    "src": "/images/team-jimmy-woolley-600.webp",
+    "srcSet": "/images/team-jimmy-woolley-320.webp 320w, /images/team-jimmy-woolley-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-marcie-colleen": {
+    "src": "/images/team-marcie-colleen-600.webp",
+    "srcSet": "/images/team-marcie-colleen-320.webp 320w, /images/team-marcie-colleen-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-marjana-perisic": {
+    "src": "/images/team-marjana-perisic-600.webp",
+    "srcSet": "/images/team-marjana-perisic-320.webp 320w, /images/team-marjana-perisic-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-sofija-trujic": {
+    "src": "/images/team-sofija-trujic-600.webp",
+    "srcSet": "/images/team-sofija-trujic-320.webp 320w, /images/team-sofija-trujic-600.webp 600w",
+    "width": 600,
+    "height": 600
+  },
+  "team-stefan-iriarte": {
+    "src": "/images/team-stefan-iriarte-600.webp",
+    "srcSet": "/images/team-stefan-iriarte-320.webp 320w, /images/team-stefan-iriarte-600.webp 600w",
+    "width": 600,
+    "height": 600
+  }
+}
