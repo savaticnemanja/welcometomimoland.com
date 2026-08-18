@@ -444,25 +444,27 @@ header.solid .brand-word{height:23px}
 .hero-cta{display:flex;gap:var(--sp-4);flex-wrap:wrap;margin-bottom:var(--sp-7)}
 
 .laurels{
-  display:flex;gap:var(--sp-3);flex-wrap:wrap;list-style:none;
+  display:flex;gap:var(--sp-6);flex-wrap:wrap;list-style:none;
   margin-top:var(--sp-4);
 }
 .laurels > li{display:flex}
 
+/* A rule down the left rather than a wreath either side. The three credits
+   plus their wreaths measured the full width of the column they sat in, so the
+   row balanced on the edge of wrapping the third onto its own line whenever
+   sub-pixel rounding went the wrong way. A border costs no width at all, which
+   is what buys the wider --sp-6 gutter between them. */
 .laurel{
-  display:flex;align-items:center;gap:var(--sp-1);
+  display:block;padding-left:var(--sp-3);
+  border-left:2px solid rgba(var(--gold-rgb),.62);
   font-size:var(--fs-2xs);letter-spacing:.04em;color:#cfdaea;line-height:1.5;
-  transition:transform var(--t-fast) var(--ease);
+  transition:border-color var(--t-fast) var(--ease),transform var(--t-fast) var(--ease);
 }
 
-.laurel-branch{
-  height:3.5em;width:auto;flex:none;
-  color:rgba(var(--gold-rgb),.62);
-  transition:color var(--t-fast) var(--ease);
-}
-.laurel-branch:last-child{transform:scaleX(-1)}
-.laurel:hover{transform:translateY(-1px)}
-.laurel:hover .laurel-branch,.laurel:focus-visible .laurel-branch{color:var(--gold)}
+/* The rule is what lights up on hover, so it carries the state the branches
+   used to. focus-visible gets it too — these are links, and a keyboard has to
+   see the same thing a pointer does. */
+.laurel:hover,.laurel:focus-visible{transform:translateY(-1px);border-left-color:var(--gold)}
 .laurel:hover i{color:var(--gold-lift)}
 .laurel-txt{display:block}
 .laurel b{display:block;color:var(--gold);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:var(--fs-3xs);margin-bottom:2px}

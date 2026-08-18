@@ -1,5 +1,4 @@
 import { HeroVideo } from "@/components/hero-video";
-import { LaurelBranch } from "@/components/icons";
 import { laurels } from "@/content/site";
 
 export function Hero() {
@@ -52,14 +51,12 @@ export function Hero() {
                   rel="noopener"
                   aria-label={`${l.kind} — ${l.title}, ${l.body} (opens in a new tab)`}
                 >
-                  <LaurelBranch className="laurel-branch" />
                   <span className="laurel-txt" aria-hidden="true">
                     <b>{l.kind}</b>
                     <i>{l.title}</i>
                     <br />
                     {l.body}
                   </span>
-                  <LaurelBranch className="laurel-branch" />
                 </a>
               </li>
             ))}
