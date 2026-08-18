@@ -193,7 +193,7 @@ export function DeckForm() {
 
       <button className="btn btn-gold" type="submit" disabled={busy}>
         {busy && <span className="spinner" aria-hidden="true" />}
-        {busy ? "Sending…" : "Request the Deck"}
+        {busy ? "Sending…" : "Send Enquiry"}
       </button>
 
       {failed && (
