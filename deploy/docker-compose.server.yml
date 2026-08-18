@@ -1,0 +1,45 @@
+# welcometomimoland.com — one container, behind host nginx on 127.0.0.1:8088.
+#
+# Server-side compose, same shape as the other apps on this box: the repo is
+# checked out at ./src and built here, and the published port is loopback-only
+# so nginx is the only way in.
+#
+# There is no .env and no `env_file:` here, unlike the other apps. The site is
+# a Next.js static export served by nginx inside the image — no application
+# process, no database, no credentials to pass in. Nothing to configure at
+# runtime means nothing to get wrong at runtime.
+#
+# No volumes either, for the same reason: nothing is written. Destroying and
+# recreating this container loses nothing, which is what makes
+# `up -d --force-recreate` a safe deploy.
+
+services:
+  app:
+    build:
+      context: ./src
+      target: runner
+    image: mimoland-app:local
+    container_name: mimoland-app
+    restart: unless-stopped
+
+    # The 127.0.0.1 prefix is the single most important line in this file.
+    # Without it Docker publishes on 0.0.0.0 and — because it writes its own
+    # iptables rules, below the firewall — the port is reachable from the
+    # internet even when UFW says it is closed. Bound to loopback, only nginx
+    # can reach it. 8088 is this box's next free slot after 8087 (vidika.co).
+    ports:
+      - "127.0.0.1:8088:80"
+
+    # nginx serving a few hundred static files needs very little. The ceiling
+    # is here so a runaway cannot take down the other ten containers on the
+    # box — or sshd.
+    mem_limit: 128m
+    cpus: "1.0"
+
+    # An unbounded json-file log will eventually fill a small VPS disk, and the
+    # symptom is every container on the box failing at once.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

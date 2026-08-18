@@ -1,0 +1,30 @@
+# Correctness — these would overwrite what the build produces or bake host
+# state into the image.
+node_modules
+out
+.next
+next-env.d.ts
+*.tsbuildinfo
+
+# Speed. assets/ is ~19 MB of source images and video that scripts/ optimises
+# into public/; the build reads public/ and never assets/. .git on a repo with
+# committed media is the other large thing in the context.
+assets
+scripts
+.git
+.github
+.vscode
+.idea
+
+# Secrets — none are used at runtime (the site is static), but a stray local
+# env file must never reach a layer.
+.env
+.env.*
+
+# Docs and host-side config. They change often and should not invalidate the
+# build layer. The two files the runtime stage needs are copied explicitly by
+# path in the Dockerfile, so excluding the rest of deploy/ is safe.
+README.md
+docs
+localhost_*.html
+.DS_Store

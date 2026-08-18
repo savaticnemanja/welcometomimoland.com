@@ -1,0 +1,30 @@
+{
+  "id": "mimoland",
+  "execute-command": "/opt/deploy/mimoland.sh",
+  "command-working-directory": "/srv/welcometomimoland.com",
+  "response-message": "deploying welcometomimoland.com",
+  "trigger-rule": {
+    "and": [
+      {
+        "match": {
+          "type": "payload-hmac-sha256",
+          "secret": "REPLACE_WITH_WEBHOOK_SECRET",
+          "parameter": {
+            "source": "header",
+            "name": "X-Hub-Signature-256"
+          }
+        }
+      },
+      {
+        "match": {
+          "type": "value",
+          "value": "refs/heads/main",
+          "parameter": {
+            "source": "payload",
+            "name": "ref"
+          }
+        }
+      }
+    ]
+  }
+}
