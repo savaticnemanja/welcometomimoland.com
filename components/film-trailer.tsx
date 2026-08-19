@@ -25,7 +25,7 @@ export function FilmTrailer() {
 
   if (!site.filmUrl) {
     return (
-      <figure className="trailer pending reveal">
+      <figure id="film-trailer" className="trailer pending reveal">
         {poster}
         <figcaption className="tag">
           <b>Watch the Film</b>
@@ -37,7 +37,7 @@ export function FilmTrailer() {
 
   if (playing && site.filmEmbedId) {
     return (
-      <div className="trailer playing reveal in">
+      <div id="film-trailer" className="trailer playing reveal in">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${site.filmEmbedId}?autoplay=1&rel=0&modestbranding=1`}
           title={`${site.filmTitle} — trailer`}
@@ -50,6 +50,7 @@ export function FilmTrailer() {
 
   return (
     <a
+      id="film-trailer"
       className="trailer reveal"
       href={site.filmUrl}
       target="_blank"

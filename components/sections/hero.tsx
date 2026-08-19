@@ -28,7 +28,7 @@ export function Hero() {
             <a href="#connect" className="btn btn-outline">
               Partner With Us
             </a>
-            <a href="#film" className="btn btn-ghost">
+            <a href="#film-trailer" className="btn btn-ghost">
               <svg
                 viewBox="0 0 24 24"
                 width="13"
