@@ -31,7 +31,11 @@ export const enquiryTypes = [
   "Education & experiences",
   "Press",
   "General enquiry",
-];
+] as const;
+
+// `as const` so a door's `enquiry` below has to name an option that exists —
+// a typo there would otherwise leave the select silently untouched.
+export type EnquiryType = (typeof enquiryTypes)[number];
 
 export const navLinks = [
   { href: "#origins", label: "Origins" },
@@ -201,6 +205,7 @@ export const doors: {
   h: string;
   p: string;
   link: string;
+  enquiry: EnquiryType;
 }[] = [
   {
     bar: "var(--peri)",
@@ -210,6 +215,7 @@ export const doors: {
     h: "A guest experience that builds loyalty",
     p: "A structured, engaging programme that eases anxiety and earns lasting affection from families — pre-flight, in-flight and beyond.",
     link: "Explore the airline programme",
+    enquiry: "Airline partnership",
   },
   {
     bar: "var(--gold)",
@@ -219,6 +225,7 @@ export const doors: {
     h: "A scalable, IP-backed model",
     p: "Cross-industry monetisation across aviation, entertainment, education, publishing, merchandising and hospitality, built for sustainable growth and lasting IP value.",
     link: "Request the investor deck",
+    enquiry: "Investment",
   },
   {
     bar: "var(--blossom)",
@@ -228,6 +235,7 @@ export const doors: {
     h: "A storyworld ready to expand",
     p: "An award-winning pilot, an animated-series screenplay and a storyworld built for expansion, ready to grow into a global family franchise.",
     link: "Talk about production",
+    enquiry: "Production & broadcast",
   },
   {
     bar: "var(--lilac)",
@@ -237,6 +245,7 @@ export const doors: {
     h: "A world children want to hold",
     p: "Licensing across collectible pillows, toys, travel kits and gift packs — beloved characters with retail already proven at airports.",
     link: "Discuss licensing",
+    enquiry: "Brand & licensing",
   },
 ];
 

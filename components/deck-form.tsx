@@ -17,12 +17,28 @@ export function DeckForm() {
   const [busy, setBusy] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [failed, setFailed] = useState(false);
+  const [interest, setInterest] = useState<string>(enquiryTypes[0]);
   const formRef = useRef<HTMLFormElement>(null);
   const thanksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (sent) thanksRef.current?.focus();
   }, [sent]);
+
+  // The partner cards link to #connect and carry the enquiry they belong to.
+  // A delegated listener keeps that section a server component and leaves the
+  // select's value owned by the form rather than by whatever linked to it.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const link = (e.target as Element | null)?.closest?.("a[data-enquiry]");
+      const value = link?.getAttribute("data-enquiry");
+      if (value && (enquiryTypes as readonly string[]).includes(value)) {
+        setInterest(value);
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
 
   if (sent) {
     return (
@@ -176,7 +192,8 @@ export function DeckForm() {
           id={`${id}-interest`}
           name="interest"
           autoComplete="off"
-          defaultValue={enquiryTypes[0]}
+          value={interest}
+          onChange={(e) => setInterest(e.target.value)}
         >
           {enquiryTypes.map((t) => (
             <option key={t} value={t}>

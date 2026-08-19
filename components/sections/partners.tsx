@@ -28,7 +28,7 @@ export function Partners() {
               <div className="dk">{d.dk}</div>
               <h3>{d.h}</h3>
               <p>{d.p}</p>
-              <a href="#connect" className="link">
+              <a href="#connect" className="link" data-enquiry={d.enquiry}>
                 {d.link}
               </a>
             </div>

@@ -159,6 +159,13 @@ It validates in-page rather than via the browser's bubbles, ties each message to
 its field with `aria-describedby`, moves focus to the first bad field, carries a
 honeypot, and asks one qualifying question so enquiries arrive sorted.
 
+The reply the enquirer receives is `email/enquiry-confirmation.html` — no code
+here sends it, so it is a body to paste into whichever service ends up doing
+the sending. Its logo is a hosted PNG rather than the site's inline SVG, because
+Gmail strips SVG; `npm run email-logo` rebuilds it from the path data in
+`components/brand-marks.tsx` so it cannot drift from the header. See
+`email/README.md`.
+
 ## Font notes
 
 `next/font` self-hosts differently than the Google Fonts CDN, which requires

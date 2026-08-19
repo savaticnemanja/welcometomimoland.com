@@ -8,6 +8,7 @@
     "preview": "npx --yes serve out",
     "images": "node scripts/optimize-images.mjs",
     "video": "node scripts/optimize-video.mjs",
+    "email-logo": "node scripts/email-logo.mjs",
     "lint": "next lint"
   },
   "dependencies": {
