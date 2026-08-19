@@ -19,7 +19,6 @@ function escapeHtml(value) {
    here is the composited result rather than the layer. */
 const NAVY = '#070e19'; // --navy-deep, the page ground
 const CARD = '#122238'; // --navy2, the card fill
-const GOLD = '#E0B053'; // --gold
 const WARM = '#FCFAF6'; // --warm, the headline
 const SOFT = '#c7d3e6'; // --sky-2, body copy on the card
 const DIM = '#7d8fab'; // --sky-5, the footer
@@ -140,7 +139,9 @@ function composeAck(submission) {
 <tr>
 <td style="padding:46px 32px 38px;" align="center">
 
-<div style="${tracked(26, 0.4, GOLD, { weight: '400' })}line-height:1.2;">MIMOLAND</div>
+<a href="https://welcometomimoland.com/" style="text-decoration:none;border:0;">
+<img src="https://welcometomimoland.com/email/logo-mimoland.png" width="250" height="44" alt="Welcome to Mimoland" style="display:block;width:250px;max-width:250px;height:auto;border:0;outline:none;text-decoration:none;">
+</a>
 
 </td>
 </tr>
