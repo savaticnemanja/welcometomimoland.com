@@ -7,6 +7,7 @@
     #C08D2C 0%,#E3B466 22%,#F0CB80 38%,#E0B053 52%,#EAC072 68%,#C99433 88%,#B8842A 100%);
 
   --gold-ink:#8F651A;
+  --gold-lift-rgb:239,200,119;
 
   --peri:#8FA9E8; --lilac:#B9A6E6; --blossom:#F0AFC4; --mint:#7cc0a8;
   --sunset:#E7A17A;
@@ -643,6 +644,7 @@ header.solid .brand-word{height:23px}
 
   --play-size:54px;
 }
+.trailer:focus-visible{outline-color:rgba(var(--gold-lift-rgb),.5)}
 .trailer img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
 a.trailer:hover img{transform:scale(1.03)}
 
@@ -668,6 +670,18 @@ a.trailer:hover img{transform:scale(1.03)}
 }
 
 .play svg{width:36%;height:36%;margin-left:4%}
+
+.trailer.in:not(.pending):not(.playing) .play::after{
+  content:"";position:absolute;inset:-1.5px;border-radius:50%;pointer-events:none;
+  border:1.5px solid rgba(var(--gold-rgb),.5);
+  animation:play-ripple 3.2s var(--ease-out) infinite;
+}
+@keyframes play-ripple{
+  0%{transform:scale(1);opacity:.5}
+  60%{transform:scale(1.6);opacity:0}
+  100%{transform:scale(1.6);opacity:0}
+}
+
 a.trailer:hover .play{
   transform:scale(1.07);
   background:rgba(var(--gold-rgb),.26);
@@ -1476,6 +1490,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .reveal{opacity:1 !important;transform:none !important}
 
   .hero-motes,.scroll-cue i::after,.hero-copy h1 .accent,.hero-video.in{animation:none}
+  .trailer .play::after{display:none}
   .btn-gold::after{display:none}
 
   .pillar{--lift:0px}
