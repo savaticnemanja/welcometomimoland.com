@@ -639,21 +639,23 @@ header.solid .brand-word{height:23px}
 
 .trailer{
   position:relative;aspect-ratio:16/9;margin-bottom:var(--sp-9);border-radius:var(--r-lg);
-  overflow:hidden;box-shadow:0 24px 60px rgba(var(--navy-rgb),.3);display:block;
+  overflow:hidden;box-shadow:var(--frame-shadow);display:block;
   scroll-margin-top:max(14px,calc(50vh - min(318px,calc((100vw - 48px) * .28125))));
 
   --play-size:54px;
+  /* The ripple rides on box-shadow rather than a pseudo-element: the frame
+     clips its own children, so a ring drawn inside could never leave it. */
+  --frame-shadow:0 24px 60px rgba(var(--navy-rgb),.3);
 }
 .trailer:focus-visible{outline-color:rgba(var(--gold-lift-rgb),.5)}
 
-.trailer.in:not(.pending):not(.playing)::after{
-  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-  border:1px solid var(--gold);border-radius:inherit;
-  animation:trailer-pulse 3.6s var(--ease) infinite;
+.trailer.in:not(.pending):not(.playing){
+  animation:trailer-ripple 4s var(--ease-out) infinite;
 }
-@keyframes trailer-pulse{
-  0%,100%{opacity:.12}
-  50%{opacity:.45}
+@keyframes trailer-ripple{
+  0%{box-shadow:var(--frame-shadow),0 0 0 0 rgba(var(--gold-rgb),.38)}
+  70%{box-shadow:var(--frame-shadow),0 0 0 13px rgba(var(--gold-rgb),0)}
+  100%{box-shadow:var(--frame-shadow),0 0 0 0 rgba(var(--gold-rgb),0)}
 }
 
 .trailer img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
@@ -1490,7 +1492,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .reveal{opacity:1 !important;transform:none !important}
 
   .hero-motes,.scroll-cue i::after,.hero-copy h1 .accent,.hero-video.in{animation:none}
-  .trailer::after{display:none}
+  .trailer.in{animation:none}
   .btn-gold::after{display:none}
 
   .pillar{--lift:0px}
