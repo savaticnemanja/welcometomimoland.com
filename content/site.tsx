@@ -126,11 +126,11 @@ export const characters: {
     p: "The soul of Mimoland — every child’s first companion through its world of kindness, courage and wonder.",
   },
   {
-    name: "Mimos",
-    image: "char-the-mimos",
-    alt: "A group of Mimo companions in different colours, gathered together above the clouds",
-    objectPosition: "center 26%",
-    p: "Children of the World — a joyful community united by friendship, diversity and belonging.",
+    name: "Fairie",
+    image: "char-the-fairie",
+    videoUrl: "https://www.youtube.com/watch?v=lhggoVz5iN0&list=PLeNWnpZtCvlA&index=2",
+    alt: "Fairie, a Princess Stewardess in a winged cabin-crew uniform",
+    p: "Princess Stewardess — caring heart of the skies, helping every child feel safe and welcome.",
   },
   {
     name: "Miri",
@@ -149,18 +149,18 @@ export const characters: {
     p: "Protective older brother — loyal and brave, always there when it matters most.",
   },
   {
-    name: "Fairie",
-    image: "char-the-fairie",
-    videoUrl: "https://www.youtube.com/watch?v=lhggoVz5iN0&list=PLeNWnpZtCvlA&index=2",
-    alt: "Fairie, a Princess Stewardess in a winged cabin-crew uniform",
-    p: "Princess Stewardess — caring heart of the skies, helping every child feel safe and welcome.",
-  },
-  {
     name: "ZuZu",
     image: "char-zuzu",
     videoUrl: "https://www.youtube.com/watch?v=ryDKJefBP_A&list=PLeNWnpZtCvlA&index=5",
     alt: "ZuZu, a shy creature peering out from behind a cloud",
     p: "Unexpected friend — discovering that even fear can become a source of courage and growth.",
+  },
+  {
+    name: "Mimos",
+    image: "char-the-mimos",
+    alt: "A group of Mimo companions in different colours, gathered together above the clouds",
+    objectPosition: "center 26%",
+    p: "Children of the World — a joyful community united by friendship, diversity and belonging.",
   },
 ];
 

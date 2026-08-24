@@ -743,11 +743,23 @@ a.trailer:hover .play{
 .char a.art-img:focus-visible{outline-color:rgba(var(--gold-lift-rgb),.5)}
 /* Bottom-left, like the trailer: a centred button sits straight on the
    character's face, which is the one thing the card is there to show. */
-.char a.art-img .veil{
+.char .art-img .veil{
   position:absolute;inset:0;
   background:linear-gradient(0deg,rgba(var(--scrim-rgb),.72) 0%,rgba(var(--scrim-rgb),.26) 34%,transparent 62%);
   transition:opacity var(--t-med) var(--ease);
 }
+/* The card without an intro yet keeps the same veil and bottom-left anchor,
+   with a quiet gold pill where the play button would sit. */
+.char .art-img .soon{
+  position:absolute;bottom:14px;left:16px;
+  padding:7px 14px;border-radius:999px;
+  background:rgba(var(--gold-rgb),.1);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(var(--gold-rgb),.55);
+  color:var(--gold-lift);
+  font-size:var(--fs-xs);font-weight:400;letter-spacing:.08em;text-transform:uppercase;
+}
+
 .char a.art-img .play{bottom:14px;left:16px}
 .char:hover a.art-img .play{
   transform:scale(1.07);

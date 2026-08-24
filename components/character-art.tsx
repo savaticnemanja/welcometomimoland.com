@@ -9,7 +9,7 @@ type Props = {
 };
 
 /* Characters with an intro turn their card art into a link out to YouTube;
-   the rest render the same frame as a plain image. */
+   the rest render the same frame with a "To Be Continued" note instead. */
 export function CharacterArt({ name, image, alt, objectPosition, videoUrl }: Props) {
   const art = (
     <Img
@@ -21,7 +21,13 @@ export function CharacterArt({ name, image, alt, objectPosition, videoUrl }: Pro
   );
 
   if (!videoUrl) {
-    return <div className="art-img">{art}</div>;
+    return (
+      <div className="art-img">
+        {art}
+        <div className="veil" />
+        <span className="soon">To Be Continued</span>
+      </div>
+    );
   }
 
   return (
