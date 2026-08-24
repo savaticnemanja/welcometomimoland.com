@@ -1,4 +1,4 @@
-import { Img } from "@/components/img";
+import { CharacterArt } from "@/components/character-art";
 import { characters } from "@/content/site";
 
 export function Characters() {
@@ -22,14 +22,13 @@ export function Characters() {
               data-delay={i % 3}
               key={c.name}
             >
-              <div className="art-img">
-                <Img
-                  name={c.image}
-                  alt={c.alt}
-                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 365px"
-                  style={c.objectPosition ? { objectPosition: c.objectPosition } : undefined}
-                />
-              </div>
+              <CharacterArt
+                name={c.name}
+                image={c.image}
+                alt={c.alt}
+                objectPosition={c.objectPosition}
+                videoUrl={c.videoUrl}
+              />
               <div className="meta">
                 <h3>{c.name}</h3>
                 <p>{c.p}</p>

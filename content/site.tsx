@@ -114,11 +114,13 @@ export const characters: {
   alt: string;
   objectPosition?: string;
   p: string;
+  videoUrl?: string;
 }[] = [
   {
-    name: "Mimo",
+    name: "Mimo Guide",
     lead: true,
     image: "char-mimo",
+    videoUrl: "https://www.youtube.com/watch?v=w5XpjLRzyPI&list=PLeNWnpZtCvlA",
     alt: "Mimo, a small blue sky-fairy with a star on its chest, floating in golden cloud light",
     objectPosition: "center 35%",
     p: "The soul of Mimoland — every child’s first companion through its world of kindness, courage and wonder.",
@@ -133,6 +135,7 @@ export const characters: {
   {
     name: "Miri",
     image: "char-miri",
+    videoUrl: "https://www.youtube.com/watch?v=YdZVJ-HYxmg&list=PLeNWnpZtCvlA&index=3",
     alt: "Miri, a five-year-old girl with curly hair and a lilac jacket, mid-flight",
     objectPosition: "center 30%",
     p: "Five-year-old explorer — endlessly curious, seeing every journey through eyes of wonder and discovery.",
@@ -140,6 +143,7 @@ export const characters: {
   {
     name: "Luc",
     image: "char-luc",
+    videoUrl: "https://www.youtube.com/watch?v=82xJClI6_Qc&list=PLeNWnpZtCvlA&index=4",
     alt: "Luc, a boy in a mustard jacket with a backpack, flying beside his sister",
     objectPosition: "center 25%",
     p: "Protective older brother — loyal and brave, always there when it matters most.",
@@ -147,12 +151,14 @@ export const characters: {
   {
     name: "Fairie",
     image: "char-the-fairie",
+    videoUrl: "https://www.youtube.com/watch?v=lhggoVz5iN0&list=PLeNWnpZtCvlA&index=2",
     alt: "Fairie, a Princess Stewardess in a winged cabin-crew uniform",
     p: "Princess Stewardess — caring heart of the skies, helping every child feel safe and welcome.",
   },
   {
     name: "ZuZu",
     image: "char-zuzu",
+    videoUrl: "https://www.youtube.com/watch?v=ryDKJefBP_A&list=PLeNWnpZtCvlA&index=5",
     alt: "ZuZu, a shy creature peering out from behind a cloud",
     p: "Unexpected friend — discovering that even fear can become a source of courage and growth.",
   },

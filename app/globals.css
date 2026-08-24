@@ -736,6 +736,25 @@ a.trailer:hover .play{
 .char .meta h3{color:#fff;font-size:var(--fs-2xl)}
 .char .meta p{color:var(--sky-3);font-size:var(--fs-sm);font-weight:300;margin-top:var(--sp-2);line-height:1.65}
 
+/* Cards whose character has an intro turn the art frame into the player.
+   --play-size lives on .trailer, so it has to be restated here for the
+   shared .play button to have a size at all. */
+.char a.art-img{display:block;cursor:pointer;--play-size:46px}
+.char a.art-img:focus-visible{outline-color:rgba(var(--gold-lift-rgb),.5)}
+/* Bottom-left, like the trailer: a centred button sits straight on the
+   character's face, which is the one thing the card is there to show. */
+.char a.art-img .veil{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(var(--scrim-rgb),.72) 0%,rgba(var(--scrim-rgb),.26) 34%,transparent 62%);
+  transition:opacity var(--t-med) var(--ease);
+}
+.char a.art-img .play{bottom:14px;left:16px}
+.char:hover a.art-img .play{
+  transform:scale(1.07);
+  background:rgba(var(--gold-rgb),.26);
+  box-shadow:0 12px 30px rgba(var(--scrim-rgb),.55);
+}
+
 .pillars{
   --pill-gap:var(--sp-3);
 
@@ -1504,5 +1523,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .logo-chip:hover,.socials a:hover,.foot a:hover,.laurel:hover{transform:none}
   .char:hover .art-img img,.comm-grid button:hover img,
   a.trailer:hover img{transform:none}
+  .char:hover a.art-img .play{transform:none}
   .pillar:hover .ico,.pillar.lit .ico,.door:hover .ico{transform:none}
 }
