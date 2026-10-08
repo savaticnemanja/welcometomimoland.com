@@ -23,6 +23,8 @@ services:
     image: welcometomimoland-app:local
     container_name: welcometomimoland-app
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
 
     # The 127.0.0.1 prefix is the single most important line in this file.
     # Without it Docker publishes on 0.0.0.0 and — because it writes its own
@@ -50,6 +52,8 @@ services:
     image: welcometomimoland-api:local
     container_name: welcometomimoland-api
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
 
     ports:
       - "127.0.0.1:8089:8787"
