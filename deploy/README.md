@@ -6,7 +6,7 @@ nginx, in the same shape as the other apps on that box.
 ```
 /srv/welcometomimoland.com/
 ├── docker-compose.yml     ← deploy/docker-compose.server.yml
-├── .env                   ← Resend key; never committed, 0640 nemanjas:developers
+├── .env                   ← Resend key; never committed, 0640 nemanja:developers
 ├── deploy/                ← copies of this directory
 └── src/                   ← this repo (main), cloned, owned by `deploy`
 ```
@@ -39,7 +39,7 @@ plain `nginx:alpine` holding the export plus two config files — no
 `node_modules`, no application process.
 
 `.env` holds the Resend key and is read only by the `api` service; the static
-site needs nothing. Mode 0640 `nemanjas:developers` — the group matters,
+site needs nothing. Mode 0640 `nemanja:developers` — the group matters,
 because the deploy hook runs as `deploy` and compose cannot read a 0600 file.
 
 ## The form

@@ -40,7 +40,7 @@ VHOST=/etc/nginx/sites-available/welcometomimoland.com
 BACKUP="$VHOST.bak-$STAMP"
 cp -a "$VHOST" "$BACKUP"
 echo "  backup: $BACKUP"
-install -m 0644 -o nemanjas -g nemanjas "$SRC/nginx-welcometomimoland.com.conf" "$VHOST"
+install -m 0644 -o nemanja -g nemanja "$SRC/nginx-welcometomimoland.com.conf" "$VHOST"
 
 [ -L /etc/nginx/sites-enabled/welcometomimoland.com ] || \
     ln -s "$VHOST" /etc/nginx/sites-enabled/welcometomimoland.com

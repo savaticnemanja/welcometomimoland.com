@@ -60,7 +60,7 @@ services:
 
     # Mail credentials. Everything optional defaults to the values in
     # server/config.mjs, so a .env holding only the API key is a complete
-    # config. Mode 0640 nemanjas:developers — the deploy hook runs as `deploy`
+    # config. Mode 0640 nemanja:developers — the deploy hook runs as `deploy`
     # and compose cannot read a 0600 file.
     env_file: .env
 
