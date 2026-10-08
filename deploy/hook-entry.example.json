@@ -1,6 +1,6 @@
 {
   "id": "mimoland",
-  "execute-command": "/opt/deploy/mimoland.sh",
+  "execute-command": "/opt/deploy/welcometomimoland.com.sh",
   "command-working-directory": "/srv/welcometomimoland.com",
   "response-message": "deploying welcometomimoland.com",
   "trigger-rule": {

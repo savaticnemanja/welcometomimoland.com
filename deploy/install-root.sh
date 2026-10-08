@@ -30,8 +30,8 @@ fi
 # ── 1b. rate-limit zone ───────────────────────────────────────────────
 # http{} context, so it cannot live in the vhost. Consumed by the limit_req in
 # the /api/contact location.
-say "installing conf.d/mimoland-ratelimit.conf"
-install -m 0644 -o root -g root "$SRC/mimoland-ratelimit.conf" /etc/nginx/conf.d/mimoland-ratelimit.conf
+say "installing conf.d/welcometomimoland.com-ratelimit.conf"
+install -m 0644 -o root -g root "$SRC/welcometomimoland.com-ratelimit.conf" /etc/nginx/conf.d/welcometomimoland.com-ratelimit.conf
 echo "  installed"
 
 # ── 2. the vhost, with rollback ───────────────────────────────────────
@@ -52,15 +52,15 @@ if nginx -t; then
 else
     echo "  FAILED — restoring previous vhost, nginx NOT reloaded" >&2
     cp -a "$BACKUP" "$VHOST"
-    rm -f /etc/nginx/conf.d/mimoland-ratelimit.conf
+    rm -f /etc/nginx/conf.d/welcometomimoland.com-ratelimit.conf
     nginx -t >/dev/null 2>&1 && echo "  rollback verified" >&2
     exit 1
 fi
 
 # ── 3. deploy hook script ─────────────────────────────────────────────
-say "installing /opt/deploy/mimoland.sh"
-install -m 0701 -o deploy -g deploy "$SRC/mimoland.sh" /opt/deploy/mimoland.sh
-ls -l /opt/deploy/mimoland.sh
+say "installing /opt/deploy/welcometomimoland.com.sh"
+install -m 0701 -o deploy -g deploy "$SRC/welcometomimoland.com.sh" /opt/deploy/welcometomimoland.com.sh
+ls -l /opt/deploy/welcometomimoland.com.sh
 
 # ── 4. hooks.json entry ───────────────────────────────────────────────
 say "adding mimoland entry to /opt/deploy/hooks.json"

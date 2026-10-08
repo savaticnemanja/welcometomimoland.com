@@ -11,7 +11,11 @@ nginx, in the same shape as the other apps on that box.
 └── src/                   ← this repo (main), cloned, owned by `deploy`
 ```
 
-Two containers:
+Two containers, in the compose project `welcometomimoland`
+(`welcometomimoland-app`, `welcometomimoland-api`). Naming on the box: Docker
+names are the domain minus its TLD; everything on disk (`/srv`, the vhost, the
+certificate, `/opt/deploy/welcometomimoland.com.sh`) is the full domain. The
+webhook id stays `mimoland`, since it is part of the URL the workflow calls.
 
 | service | port | what it is |
 | --- | --- | --- |
@@ -65,8 +69,8 @@ syntax — keep the two in step.
 
 Push to `main` → `.github/workflows/deploy.yaml` POSTs an HMAC-signed payload
 to `https://nemanjas.dev/hooks/mimoland` → the webhook service runs
-`/opt/deploy/mimoland.sh` as the unprivileged `deploy` user, which pulls,
-rebuilds and recreates the container.
+`/opt/deploy/welcometomimoland.com.sh` as the unprivileged `deploy` user,
+which pulls, rebuilds and recreates the container.
 
 The workflow holds no SSH key and no registry credentials; the HMAC signature
 is the entire authentication. `WEBHOOK_SECRET` in the repo secrets must equal
@@ -99,14 +103,14 @@ Idempotent; backs up everything it replaces and rolls the vhost back if
 
 ## TLS and Cloudflare
 
-The certificate is the **vidika.co** Certbot lineage — one cert covers both
-names, so renewal affects both sites. That is why the port-80 and Certbot
-blocks in `nginx-welcometomimoland.com.conf` are carried over untouched.
+The certificate is this site's own Certbot lineage, **welcometomimoland.com**
+(until 2026-10-08 it shared the vidika.co lineage). The port-80 block in
+`nginx-welcometomimoland.com.conf` keeps the ACME challenge path open.
 
 The site is proxied by Cloudflare, so the origin sees Cloudflare addresses.
 `cloudflare-realip.conf` restores the visitor address from `CF-Connecting-IP`.
-Nothing here rate-limits, so it only buys correct access logs. The installer
-creates that snippet only if it is absent — vidika.co installs the same file,
-and neither site rewrites it out from under the other.
+That is what gives the contact route's `limit_req` a per-visitor key. The
+installer creates that snippet only if it is absent — vidika.co installs the
+same file, and neither site rewrites it out from under the other.
 
 `www.welcometomimoland.com` has no DNS record, so no `www` vhost is configured.

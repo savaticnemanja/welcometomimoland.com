@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Deploy hook for welcometomimoland.com — invoked by /opt/deploy/hooks.json
 # (webhook svc, runs as user `deploy`). Pulls main, rebuilds the image,
-# restarts the stack. Install to /opt/deploy/mimoland.sh (owner deploy, 0701).
+# restarts the stack. Install to /opt/deploy/welcometomimoland.com.sh (owner deploy, 0701).
 set -euo pipefail
 
 ROOT="/srv/welcometomimoland.com"
