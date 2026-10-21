@@ -364,9 +364,27 @@ export const recognition: {
   },
   {
     icon: "laurel",
+    name: "AI Indie Cinema London",
+    note: "Winner · Best Short",
+    href: festivals.aiCinemaLondon,
+  },
+  {
+    icon: "laurel",
+    name: "AI Indie Cinema London",
+    note: "Winner · Best Screenplay",
+    href: festivals.aiCinemaLondon,
+  },
+  {
+    icon: "laurel",
     name: "Prompt Film Festival",
     note: "Official Selection · Toronto",
     href: festivals.prompt,
+  },
+  {
+    icon: "laurel",
+    name: "Auguri Film Festival Italy",
+    note: "Official Selection · Best AI Film",
+    href: festivals.auguri,
   },
   {
     icon: "network",
@@ -397,6 +415,12 @@ export const recognition: {
     name: "Dufry & Hudson",
     note: "Belgrade Airport Retail",
     href: "https://bonitet.com/uspesne-price-welcome-to-mimoland/",
+  },
+  {
+    icon: "retail",
+    name: "Delfi Knjižare",
+    note: "Mimoland Book Retail",
+    href: "https://delfi.rs/knjige/129696-slikovnica–mimoland-by-the-flying-fairy-knjiga-delfi-knjizare.html",
   },
 ];
 
@@ -432,6 +456,12 @@ export const media: {
     href: "https://www.youtube.com/watch?v=3h_Osy3P478",
     kind: "tv",
     title: "Television interview",
+  },
+  {
+    name: "RTS Srbija danas",
+    href: "https://www.rts.rs/lat/vesti/srbija-danas/4691378/knjige-za-osnovce-u-brdsko-planinskim-selima.html",
+    kind: "tv",
+    title: "Books for schoolchildren in mountain villages",
   },
 ];
 

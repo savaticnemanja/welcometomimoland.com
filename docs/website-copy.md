@@ -278,13 +278,17 @@ confidence, imagination and a positive connection with flying.
 ### Backed by institutions, recognised by festivals
 
 - Berlin Indie Film Festival · Winner, Best Family Friendly Film
+- London AI Shorts · Winner, Best AI Director
+- AI Indie Cinema London · Winner, Best Short
+- AI Indie Cinema London · Winner, Best Screenplay
 - Prompt Film Festival, Toronto · Official Selection
-- London AI Shorts · Winner, Best Director
+- Auguri Film Festival Italy · Official Selection, Best AI Film
 - Impact Hub · Top 7 Balkan Startups 2021
 - National Library of Serbia
 - Chamber of Commerce & Industry
 - National Tourism Organization
 - Retail at Dufry & Hudson, Belgrade Airport
+- Delfi Knjižare · Mimoland Book Retail
 
 ---
 

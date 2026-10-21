@@ -12,7 +12,7 @@ export function Recognition() {
         </div>
         <ul className="logos">
           {recognition.map((r, i) => (
-            <li className="reveal" data-delay={i % 4} key={r.name}>
+            <li className="reveal" data-delay={i % 4} key={`${r.name} ${r.note}`}>
               <a
                 className="logo-chip"
                 href={r.href}
