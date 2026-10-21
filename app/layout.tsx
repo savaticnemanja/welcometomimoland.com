@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: "/og.jpg",
+        url: "/og.jpg?v=2",
         width: 1200,
         height: 630,
         alt: "Mimoland — the world's first flying fairytale. Miri looks on in wonder beside four festival wins and two official selections.",
