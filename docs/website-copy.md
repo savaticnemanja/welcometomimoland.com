@@ -46,7 +46,7 @@ education and aviation to build confidence before anxiety can take root.
 - **Winner** — Best AI Director · London AI Shorts
 - **Winner** — Best Short · AI Indie Cinema London
 - **Winner** — Best Screenplay · AI Indie Cinema London
-- **Official Selection** — Prompt Film Festival · Toronto
+- **Official Selection** — Official Screening · Prompt Film Festival Toronto
 - **Official Selection** — Best AI Film · Auguri Film Festival Italy
 
 ---
@@ -281,7 +281,7 @@ confidence, imagination and a positive connection with flying.
 - London AI Shorts · Winner, Best AI Director
 - AI Indie Cinema London · Winner, Best Short
 - AI Indie Cinema London · Winner, Best Screenplay
-- Prompt Film Festival, Toronto · Official Selection
+- Prompt Film Festival Toronto · Official Selection, Official Screening
 - Auguri Film Festival Italy · Official Selection, Best AI Film
 - Impact Hub · Top 7 Balkan Startups 2021
 - National Library of Serbia

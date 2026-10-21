@@ -87,8 +87,8 @@ export const laurels = [
   },
   {
     kind: "Official Selection",
-    title: "Prompt Film Festival",
-    body: "Toronto",
+    title: "Prompt Film Festival Toronto",
+    body: "Official Screening",
     href: festivals.prompt,
   },
   {
@@ -376,8 +376,8 @@ export const recognition: {
   },
   {
     icon: "laurel",
-    name: "Prompt Film Festival",
-    note: "Official Selection · Toronto",
+    name: "Prompt Film Festival Toronto",
+    note: "Official Selection · Official Screening",
     href: festivals.prompt,
   },
   {
