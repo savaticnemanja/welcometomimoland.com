@@ -444,9 +444,26 @@ header.solid .brand-word{height:23px}
 .hero-sub{font-size:var(--fs-lead);color:#dbe3f0;max-width:34ch;font-weight:300;margin-bottom:var(--sp-7)}
 .hero-cta{display:flex;gap:var(--sp-4);flex-wrap:wrap;margin-bottom:var(--sp-7)}
 
+/* One label for the whole row: the year is shared by every credit, so it sits
+   here once, trailed by a hairline that runs the width of the grid below. */
+.laurels-head{
+  display:flex;align-items:center;gap:var(--sp-2);
+  margin:var(--sp-4) 0 var(--sp-4);
+  font-size:var(--fs-3xs);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:#9fb3d4;line-height:1;
+}
+.laurels-head::after{
+  content:"";flex:1;height:1px;margin-left:var(--sp-2);
+  background:linear-gradient(90deg,rgba(var(--gold-rgb),.45),transparent);
+}
+.laurels-year{color:var(--gold)}
+.laurels-year::before{content:"·";color:#9fb3d4;margin-right:var(--sp-2)}
+
+/* Six credits as a fixed three-up grid, so the two rows line up column for
+   column instead of wrapping wherever each line happens to run out. */
 .laurels{
-  display:flex;gap:var(--sp-6);flex-wrap:wrap;list-style:none;
-  margin-top:var(--sp-4);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--sp-4) var(--sp-5);list-style:none;
 }
 .laurels > li{display:flex}
 
@@ -454,7 +471,7 @@ header.solid .brand-word{height:23px}
    plus their wreaths measured the full width of the column they sat in, so the
    row balanced on the edge of wrapping the third onto its own line whenever
    sub-pixel rounding went the wrong way. A border costs no width at all, which
-   is what buys the wider --sp-6 gutter between them. */
+   is what leaves room for three to a row. */
 .laurel{
   display:block;padding-left:var(--sp-3);
   border-left:2px solid rgba(var(--gold-rgb),.62);
@@ -1429,6 +1446,8 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .comm-grid figcaption{display:none}
 
   .logos{grid-template-columns:repeat(2,1fr)}
+
+  .laurels{grid-template-columns:repeat(2,minmax(0,1fr))}
 
   .team-grid{grid-template-columns:repeat(2,1fr);gap:var(--sp-8) var(--sp-6)}
   .quote{padding-top:var(--sp-9)}

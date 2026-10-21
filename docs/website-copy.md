@@ -40,11 +40,14 @@ education and aviation to build confidence before anxiety can take root.
 **Button:** Partner With Us
 **Button:** ▶ Watch the Film
 
-**Laurels**
+**Laurels** — headed "Festival Honours · 2026" (the year covers the whole row)
 
 - **Winner** — Best Family Friendly Film · Berlin Indie Film Festival
+- **Winner** — Best AI Director · London AI Shorts
+- **Winner** — Best Short · AI Indie Cinema London
+- **Winner** — Best Screenplay · AI Indie Cinema London
 - **Official Selection** — Prompt Film Festival · Toronto
-- **Winner** — Best Director · London AI Shorts
+- **Official Selection** — Best AI Film · Auguri Film Festival Italy
 
 ---
 

@@ -52,7 +52,13 @@ const festivals = {
   berlin: "https://berlinindiefilmfestival.com/winners/2026/6",
   londonAiShorts: "https://londonaishorts.com/#awards",
   prompt: "https://promptfilmfest.com/index.html",
+  aiCinemaLondon: "https://aicinemalondon.com/",
+  auguri: "https://augurifestival.com/officialselectionjuly2026",
 };
+
+// Every credit below is from the same festival year, so the hero states it
+// once above the row instead of on each one.
+export const laurelsYear = "2026";
 
 export const laurels = [
   {
@@ -68,10 +74,28 @@ export const laurels = [
     href: festivals.londonAiShorts,
   },
   {
+    kind: "Winner",
+    title: "AI Indie Cinema London",
+    body: "Best Short",
+    href: festivals.aiCinemaLondon,
+  },
+  {
+    kind: "Winner",
+    title: "AI Indie Cinema London",
+    body: "Best Screenplay",
+    href: festivals.aiCinemaLondon,
+  },
+  {
     kind: "Official Selection",
     title: "Prompt Film Festival",
     body: "Toronto",
     href: festivals.prompt,
+  },
+  {
+    kind: "Official Selection",
+    title: "Auguri Film Festival Italy",
+    body: "Best AI Film",
+    href: festivals.auguri,
   },
 ];
 

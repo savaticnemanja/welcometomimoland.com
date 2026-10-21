@@ -1,5 +1,5 @@
 import { HeroVideo } from "@/components/hero-video";
-import { laurels } from "@/content/site";
+import { laurels, laurelsYear } from "@/content/site";
 
 export function Hero() {
   return (
@@ -41,15 +41,19 @@ export function Hero() {
               Watch the Film
             </a>
           </div>
-          <ul className="laurels">
+          <p className="laurels-head">
+            <span>Festival Honours</span>
+            <span className="laurels-year">{laurelsYear}</span>
+          </p>
+          <ul className="laurels" aria-label={`Festival honours, ${laurelsYear}`}>
             {laurels.map((l) => (
-              <li key={l.title}>
+              <li key={`${l.title} ${l.body}`}>
                 <a
                   className="laurel"
                   href={l.href}
                   target="_blank"
                   rel="noopener"
-                  aria-label={`${l.kind} — ${l.title}, ${l.body} (opens in a new tab)`}
+                  aria-label={`${l.kind} — ${l.title}, ${l.body}, ${laurelsYear} (opens in a new tab)`}
                 >
                   <span className="laurel-txt" aria-hidden="true">
                     <b>{l.kind}</b>
