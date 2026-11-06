@@ -4,6 +4,7 @@ import { RevealObserver } from "@/components/reveal-observer";
 import { ScrollUI } from "@/components/scroll-ui";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Book } from "@/components/sections/book";
 import { Characters } from "@/components/sections/characters";
 import { Community } from "@/components/sections/community";
 import { Connect } from "@/components/sections/connect";
@@ -30,6 +31,7 @@ export default function Home() {
         <WhatMimolandIs />
         <Characters />
         <Ecosystem />
+        <Book />
         <Partners />
         <Community />
         <Recognition />

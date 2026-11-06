@@ -16,7 +16,12 @@ export type IconName =
   | "network"
   | "books"
   | "institution"
-  | "retail";
+  | "retail"
+  | "heart"
+  | "family"
+  | "download"
+  | "play"
+  | "amazon";
 
 const paths: Record<IconName, ReactNode> = {
   aviation: (
@@ -130,6 +135,36 @@ const paths: Record<IconName, ReactNode> = {
     <>
       <path d="M4.4 7.6h15.2l-1.1 12.1a1.6 1.6 0 0 1-1.6 1.5H7.1a1.6 1.6 0 0 1-1.6-1.5z" />
       <path d="M8.6 10V6.6a3.4 3.4 0 0 1 6.8 0V10" />
+    </>
+  ),
+
+  heart: (
+    <path d="M12 20.2S3.2 15 3.2 9.1A4.6 4.6 0 0 1 12 7.3a4.6 4.6 0 0 1 8.8 1.8c0 5.9-8.8 11.1-8.8 11.1z" />
+  ),
+  family: (
+    <>
+      <path d="M12 4.4a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z" />
+      <path d="M6 6.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2z" />
+      <path d="M18 6.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2z" />
+      <path d="M7.4 18.6v-1.8a4.6 4.6 0 0 1 9.2 0v1.8z" />
+      <path d="M5.6 13.4a3.4 3.4 0 0 0-3.4 3.4v1.8h3" />
+      <path d="M18.4 13.4a3.4 3.4 0 0 1 3.4 3.4v1.8h-3" />
+    </>
+  ),
+  download: (
+    <>
+      <path d="M12 3.6v11.2" />
+      <path d="m7.4 10.4 4.6 4.6 4.6-4.6" />
+      <path d="M4 16.2v2.6a1.6 1.6 0 0 0 1.6 1.6h12.8a1.6 1.6 0 0 0 1.6-1.6v-2.6" />
+    </>
+  ),
+  play: <path d="M8 5.2v13.6L19 12z" fill="currentColor" />,
+  amazon: (
+    <>
+      <path d="M16.4 5.4v8.9" />
+      <path d="M16.4 9.8c0 2.5-1.9 4.5-4.3 4.5s-4.3-2-4.3-4.5 1.9-4.4 4.3-4.4 4.3 2 4.3 4.4z" />
+      <path d="M3.4 17.1c5.2 3.5 12.2 3.6 17 .3" />
+      <path d="m17.6 16.2 3 .9-.8 3" />
     </>
   ),
 };

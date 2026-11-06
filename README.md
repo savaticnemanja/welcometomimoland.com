@@ -31,10 +31,11 @@ npm run video    # regenerate public/video from assets/video
 | `assets/` | Source images, video master and logo artboards. Edit these |
 | `public/images/`, `public/video/` | Generated renditions — never edit by hand |
 
-Nine components ship JavaScript: `site-header` (the drawer), `reveal-observer`,
+Ten components ship JavaScript: `site-header` (the drawer), `reveal-observer`,
 `scroll-ui` (progress, scroll spy, back-to-top), `pillar-sweep`, `hero-video`,
-`film-trailer`, `count-up`, `gallery` (the photo overlay) and `deck-form`.
-Everything else, including every section, renders to static HTML.
+`film-trailer`, `count-up`, `gallery` (the photo overlay), `book-aside` (the
+book's Look Inside viewer and trailer player) and `deck-form`. Everything else,
+including every section, renders to static HTML.
 
 ## The token contracts
 
@@ -89,6 +90,28 @@ On macOS, Homebrew's ffmpeg can fail on startup with a missing `libx265` dylib
 after an unrelated `brew upgrade`. `scripts/optimize-video.mjs` works around it
 by putting every installed x265 on the fallback path; `brew reinstall ffmpeg` is
 the real cure.
+
+## The book section
+
+`#book`, under the Ecosystem. Its copy and the page list are `book` and
+`bookSpreads` in `content/site.tsx`. The trailer is the YouTube upload
+(`site.bookTrailerEmbedId`), played in an overlay the way the film trailer
+plays inline; the rest came from the client's hand-over, and two pieces of it
+do not go through the pipelines above:
+
+- **Look Inside** is the 28-page "LOOK INSIDE" PDF (92 MB) rendered at 144 dpi
+  into `assets/images/book-page-NN.jpg`, then through `npm run images` as usual.
+  `bookSpreads` groups them as the book opens — the interior pages are facing
+  pairs whose artwork crosses the gutter — and the viewer shows spreads when
+  the viewport is at least square, single pages otherwise.
+- **`public/downloads/mimoland-welcome-pack.pdf`** is the 12 MB welcome pack
+  through Ghostscript's `/ebook` preset (2 MB). The colouring line art is
+  vector and prints as sharp as the original; only the small character
+  pictures drop to 150 dpi.
+
+The viewers render into `document.body` through a portal, so neither the
+reveal transform on the column nor any stacking context in the section can
+trap them under the header (see the drawer traps below).
 
 ## Interaction and accessibility
 

@@ -124,6 +124,7 @@ export function SiteFooter() {
             <a href="#origins">Origins</a>
             <a href="#world">The World</a>
             <a href="#ecosystem">Ecosystem</a>
+            <a href="#book">The Book</a>
             <a href="#partners">Partner With Us</a>
             <a href="#impact">Impact</a>
             <a href="#traction">Recognition</a>

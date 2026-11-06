@@ -25,6 +25,10 @@
 /email/*
   Cache-Control: public, max-age=604800
 
+# The welcome pack. Not content-hashed and shared by link, so a week.
+/downloads/*
+  Cache-Control: public, max-age=604800
+
 # HTML must revalidate so deploys are picked up immediately.
 /*
   Cache-Control: public, max-age=0, must-revalidate

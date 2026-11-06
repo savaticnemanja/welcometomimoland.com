@@ -16,6 +16,11 @@ export const site = {
   filmEmbedId: "JfTf3TRLYTU" as string | null,
   filmTitle: "Mimoland: The First Flight",
   heroVideo: "hero-loop" as string | null,
+  // Same pattern as the film: the link is the no-JS fallback, the id plays
+  // it in the page.
+  bookTrailerUrl: "https://youtu.be/inv9kYUGRLw" as string | null,
+  bookTrailerEmbedId: "inv9kYUGRLw" as string | null,
+  welcomePack: "/downloads/mimoland-welcome-pack.pdf" as string | null,
   deckUrl: null as string | null,
   // The contact handler, served from the same origin by the host nginx
   // (see deploy/). Set to null and the form degrades to a mailto: link
@@ -468,6 +473,93 @@ export const media: {
 export const mediaKinds: { kind: "news" | "tv"; label: string; icon: IconName }[] = [
   { kind: "news", label: "News", icon: "news" },
   { kind: "tv", label: "TV", icon: "tv" },
+];
+
+// The book section, directly under the Ecosystem.
+export const book = {
+  story: [
+    "Born from a young girl’s dream of flying, this original fairytale takes us to Wish Mountain, where dreams come true, and beyond seven sunlit rainbows to Mimoland, a world that exists alongside our own, high above the clouds and within the journeys of airplanes.",
+    "Here, Fairy becomes the Flying Fairy, a flight attendant with a special mission to bring children from around the world to Mimoland, where human virtues are cherished and shared.",
+    "The Mimos emerge from pillows aboard airplanes, welcoming children with love and kindness, while an ancient tree tells the story of human hearts through its roots and leaves.",
+    "When ZuZu Troll threatens Mimoland, friendship, courage and the choices children make hold the key to restoring harmony.",
+  ],
+  values: [
+    {
+      icon: "heart",
+      p: "Created to help children approach their first flight with curiosity, joy and confidence, the fairytale is also a story for families to share at bedtime and as children prepare for new experiences in life.",
+    },
+    {
+      icon: "family",
+      p: "For parents and educators, it opens conversations about emotions, empathy and self-confidence, nurturing qualities children can carry far beyond their first flight.",
+    },
+  ] as { icon: IconName; p: string }[],
+  gift: "Nine printable Mimocards filled with creativity, kindness and playful discoveries, for little adventures at home or in the sky.",
+  next: (
+    <>
+      The upcoming companion book, <em>Mimoland Activity Book: 17 Sky Missions</em>,
+      extends the fairytale into Mimoland’s edutainment universe.
+    </>
+  ) as ReactNode,
+};
+
+export type BookPage = { image: ImageName; alt: string };
+
+// "Look inside", grouped the way the book opens. The interior pages are
+// facing pairs whose artwork runs across the gutter, so a wide viewer shows
+// them side by side; a phone shows one page at a time from the same list.
+export const bookSpreads: BookPage[][] = [
+  [{ image: "book-page-01", alt: "Front cover: children and Mimos aboard an airplane" }],
+  [{ image: "book-page-02", alt: "Title and copyright page" }],
+  [
+    { image: "book-page-03", alt: "A girl on a tyre swing watches an airplane overhead" },
+    { image: "book-page-04", alt: "Fairy: children playing in a garden beneath the vapour trails" },
+  ],
+  [
+    { image: "book-page-05", alt: "Fairy asleep, dreaming of the wish mountain" },
+    { image: "book-page-06", alt: "Fairy stands on the peak of Wish Mountain" },
+  ],
+  [
+    { image: "book-page-07", alt: "Children and their Mimos in the airplane cabin" },
+    { image: "book-page-08", alt: "The Secret: the Flying Fairy with children in the cabin" },
+  ],
+  [
+    { image: "book-page-09", alt: "The Flying Fairy tells the children about the Mimos" },
+    { image: "book-page-10", alt: "Children ask the Flying Fairy whether they will get wings" },
+  ],
+  [
+    { image: "book-page-11", alt: "Children cross a branch towards hanging lanterns" },
+    { image: "book-page-12", alt: "Mimoland: fairies flying among giant flowers" },
+  ],
+  [
+    { image: "book-page-13", alt: "An elephant greets a girl on a path of giant cakes" },
+    { image: "book-page-14", alt: "A giraffe among cupcakes beside a waterfall" },
+  ],
+  [
+    { image: "book-page-15", alt: "The ancient tree, with a white cat sleeping at its roots" },
+    { image: "book-page-16", alt: "The Legend of the Tree: a Mimo waves before a castle" },
+  ],
+  [
+    { image: "book-page-17", alt: "A red forest of twisted branches" },
+    { image: "book-page-18", alt: "ZuZu Troll and Shocky Plane" },
+  ],
+  [
+    { image: "book-page-19", alt: "Mimos gather for a feast in a village of candy houses" },
+    { image: "book-page-20", alt: "Children and Mimos share fruit at the table" },
+  ],
+  [
+    { image: "book-page-21", alt: "A baby camel resting in an oasis" },
+    { image: "book-page-22", alt: "A boy and his Mimo in the desert" },
+  ],
+  [
+    { image: "book-page-23", alt: "Children fly between the stars" },
+    { image: "book-page-24", alt: "ZuZu Troll, You Will Change Your Goals" },
+  ],
+  [
+    { image: "book-page-25", alt: "The Prince Pilot walks into a twilight forest" },
+    { image: "book-page-26", alt: "The Prince Pilot sees the Flying Fairy" },
+  ],
+  [{ image: "book-page-27", alt: "Thank you for flying with the Mimos" }],
+  [{ image: "book-page-28", alt: "Back cover" }],
 ];
 
 export type Stage = "dev" | "test" | "ready" | "active" | "pub";
