@@ -863,10 +863,9 @@ a.trailer:hover .play{
 
 /* The book. Two columns split by a gold rule: the book and its three ways in
    on the left, the story on the right. The header is its own grid item so a
-   phone can put it above the cover rather than below it. */
-/* The glow behind the cover reaches past a phone's edge; clip, not hidden,
-   so the section does not become a scroll container. */
-.book-sec{overflow-x:clip}
+   phone can put it above the cover rather than below it. Everything else is
+   the site's own parts — .sec-head, .btn, the Ecosystem's icon tile and card —
+   so the layout is the mockup's and the type is the page's. */
 .book{
   --aside-w:300px;
   --book-gap:calc(var(--sp-9) * 2);
@@ -891,71 +890,69 @@ a.trailer:hover .play{
 }
 .book-rule::after{background:linear-gradient(90deg,rgba(var(--gold-rgb),.65),transparent)}
 
-.book-head{grid-area:head;text-align:center;margin-bottom:var(--sp-7)}
+.book-head{grid-area:head}
 .book-orn{display:block;width:58px;height:auto;margin:0 auto var(--sp-3);color:var(--gold);
   filter:drop-shadow(0 0 12px rgba(var(--gold-rgb),.35))}
-.book-head h2{font-size:var(--fs-h2);font-style:italic;margin:var(--sp-3) 0 var(--sp-3)}
-.book-tag{font-family:var(--serif);font-style:italic;font-size:var(--fs-3xl);color:var(--gold);line-height:1.35}
 
 .book-body{grid-area:body;min-width:0}
-.book-story p{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300;line-height:1.7}
-.book-story p + p{margin-top:var(--sp-3)}
+.book-story p{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}
+.book-story p + p{margin-top:var(--sp-4)}
 
-.book h3{font-family:var(--serif);font-style:italic;color:var(--gold);font-weight:500}
-.book .book-values-h{font-size:var(--fs-quote);margin:var(--sp-9) 0 var(--sp-7);line-height:1.2}
+.book .book-values-h{font-size:var(--fs-h3);margin:var(--sp-9) 0 var(--sp-7)}
 .book .book-values-h::before,.book .book-values-h::after{max-width:none}
 
+/* The Ecosystem's icon tile, in gold. */
+.book .ico{
+  width:44px;height:44px;border-radius:var(--r-md);flex:none;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);
+  background:rgba(var(--gold-rgb),.14);
+  border:1px solid rgba(var(--gold-rgb),.3);
+}
+.book .ico svg{width:23px;height:23px}
+
 .book-values{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-8)}
-.book-values li{display:flex;gap:var(--sp-5);align-items:flex-start;position:relative}
+.book-values li{display:flex;gap:var(--sp-4);align-items:flex-start;position:relative}
 .book-values li + li::before{
   content:"";position:absolute;left:calc(var(--sp-8) / -2);top:2px;bottom:2px;width:1px;
   background:linear-gradient(180deg,transparent,rgba(var(--gold-rgb),.45),transparent);
 }
-.book-values svg{width:38px;height:38px;flex:none;color:var(--gold);margin-top:2px}
-.book-values p{color:var(--sky-2);font-size:var(--fs-md);font-weight:300;line-height:1.65}
+.book-values p{color:var(--sky-3);font-size:var(--fs-md);font-weight:300}
 
+/* The Ecosystem's card, lift and all. */
 .book-gift{
-  display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;
-  grid-template-areas:"ico h p btn";align-items:center;gap:var(--sp-5);
-  margin-top:var(--sp-9);padding:var(--sp-5) var(--sp-6);
-  border:1px solid rgba(var(--gold-rgb),.45);border-radius:var(--r-lg);
-  background:
-    radial-gradient(80% 140% at 0% 0%,rgba(var(--gold-rgb),.08),transparent 60%),
-    linear-gradient(180deg,var(--navy2),var(--navy3));
-  box-shadow:var(--e-dark-1);
-  transition:border-color var(--t-med) var(--ease),box-shadow var(--t-med) var(--ease);
+  --lift:4px;
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+  grid-template-areas:"ico h btn" "ico p btn";
+  column-gap:var(--sp-5);row-gap:var(--sp-1);align-items:center;
+  margin-top:var(--sp-9);padding:var(--sp-6);border-radius:var(--r-lg);
+  background:linear-gradient(180deg,var(--navy2),var(--navy3));
+  border:1px solid var(--line-dark);
+  transition:transform var(--t-med) var(--ease),border-color var(--t-med) var(--ease),
+             box-shadow var(--t-med) var(--ease);
 }
 .book-gift:hover{
-  border-color:rgba(var(--gold-rgb),.75);
-  box-shadow:var(--e-dark-1),0 0 32px rgba(var(--gold-rgb),.12);
+  transform:translateY(calc(var(--lift) * -1));
+  border-color:rgba(var(--gold-rgb),.45);
+  box-shadow:var(--e-dark-1);
 }
-.book-gift .gift-ico{grid-area:ico;color:var(--gold);display:flex}
-.book-gift .gift-ico svg{width:40px;height:40px}
-.book-gift h3{
-  grid-area:h;font-size:var(--fs-4xl);line-height:1.15;max-width:7em;
-  padding:var(--sp-1) var(--sp-5);border-inline:1px solid rgba(var(--gold-rgb),.35);
-}
-.book-gift p{grid-area:p;color:var(--sky-2);font-size:var(--fs-sm);font-weight:300;line-height:1.55}
-.book-gift .btn{
-  grid-area:btn;gap:var(--sp-3);padding:var(--sp-3) var(--sp-5);text-align:left;
-  font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;line-height:1.3;
-}
-.book-gift .btn > span{max-width:15ch}
-.book-gift .btn svg{width:22px;height:22px;flex:none}
+.book-gift .ico{grid-area:ico}
+.book-gift h3{grid-area:h;font-size:var(--fs-3xl);align-self:end}
+.book-gift p{grid-area:p;color:var(--sky-3);font-size:var(--fs-sm);font-weight:300;align-self:start}
+.book-gift .btn{grid-area:btn;text-wrap:balance}
 
 .book-next{
-  display:flex;gap:var(--sp-5);align-items:flex-start;
-  margin-top:var(--sp-8);padding-top:var(--sp-7);position:relative;
+  display:flex;gap:var(--sp-4);align-items:flex-start;
+  margin-top:var(--sp-8);padding-top:var(--sp-8);position:relative;
 }
 .book-next::before{
   content:"";position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.4) 20%,
              rgba(var(--gold-rgb),.4) 80%,transparent);
 }
-.book-next > svg{width:46px;height:46px;flex:none;color:var(--gold)}
-.book-next h3{font-size:var(--fs-4xl);line-height:1.2;margin-bottom:var(--sp-1)}
-.book-next p{color:var(--sky-2);font-size:var(--fs-md);font-weight:300;line-height:1.65}
-.book-next em{color:var(--sky-1)}
+.book-next h3{font-size:var(--fs-3xl);margin-bottom:var(--sp-1)}
+.book-next p{color:var(--sky-3);font-size:var(--fs-md);font-weight:300}
+.book-next em{color:var(--sky-2)}
 
 .book-aside{grid-area:aside;align-self:center;display:flex;flex-direction:column}
 
@@ -977,20 +974,15 @@ a.trailer:hover .play{
 }
 .book-art:hover img{transform:translateY(-6px) rotate(-1deg)}
 
+/* The hero's pairing: gold for the main action, ghost for "watch", outline
+   for the way out. Stock .btn sizes; only the width is the column's. */
 .book-ctas{display:flex;flex-direction:column;gap:var(--sp-3)}
-.book-ctas .btn{
-  width:100%;min-height:52px;gap:var(--sp-3);
-  font-size:var(--fs-sm);letter-spacing:.12em;text-transform:uppercase;
-}
-.book-ctas .btn svg{width:20px;height:20px;flex:none}
-.book-ctas .btn-outline{color:#fff}
-.book-ctas .btn-outline svg{color:var(--gold)}
-.book-ctas .btn-outline:hover{color:var(--gold-lift)}
-.book-ctas .book-look{min-height:60px;font-size:var(--fs-lg);letter-spacing:.14em}
-.book-ctas .book-look svg{width:26px;height:26px}
+.book-ctas .btn{width:100%}
+.book .btn svg{width:17px;height:17px;flex:none}
+.book .btn svg.btn-play{width:13px;height:13px}
 .book-look-note{
-  font-family:var(--serif);font-style:italic;font-size:var(--fs-base);
-  color:var(--sky-3);text-align:center;margin:0 0 var(--sp-3);
+  font-size:var(--fs-sm);font-weight:300;color:var(--sky-4);
+  text-align:center;margin:calc(var(--sp-1) * -1) 0 var(--sp-2);
 }
 
 .doors{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-6)}
@@ -1532,11 +1524,11 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 
   .pillar{padding:var(--sp-6) var(--sp-5) var(--sp-6)}
 
-  /* The gift card's four cells stop fitting one row here: the button drops
-     under the copy and the icon and title hold the left. */
+  /* The gift card's button stops fitting beside the copy here and drops
+     under it. */
   .book{--aside-w:270px;--book-gap:var(--sp-10)}
-  .book-gift{grid-template-columns:auto auto minmax(0,1fr);grid-template-areas:"ico h p" "ico h btn";row-gap:var(--sp-4)}
-  .book-gift .btn{justify-self:start}
+  .book-gift{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ico h" "ico p" "ico btn";align-items:start}
+  .book-gift .btn{justify-self:start;margin-top:var(--sp-3)}
 }
 @media(max-width:1080px){
   .doors{gap:var(--sp-4)}
@@ -1690,17 +1682,13 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
     left:0;right:0;top:calc(var(--sp-7) / -2);bottom:auto;width:auto;height:1px;
     background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.45),transparent);
   }
-  .book-values svg{width:32px;height:32px}
 
   .book-gift{
     grid-template-columns:minmax(0,1fr);grid-template-areas:"ico" "h" "p" "btn";
-    justify-items:center;text-align:center;gap:var(--sp-3);padding:var(--sp-7) var(--sp-5) var(--sp-6);
+    justify-items:center;text-align:center;row-gap:var(--sp-2);padding:var(--sp-6) var(--sp-5);
   }
-  .book-gift h3{max-width:none;padding:0;border:0}
-  .book-gift .btn{justify-self:center;margin-top:var(--sp-2)}
-
-  .book-next{gap:var(--sp-4)}
-  .book-next > svg{width:36px;height:36px}
+  .book-gift .ico{margin-bottom:var(--sp-2)}
+  .book-gift .btn{justify-self:center}
 }
 
 @media(max-width:520px){
@@ -1748,7 +1736,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .trailer.in{animation:none}
   .btn-gold::after{display:none}
 
-  .pillar{--lift:0px}
+  .pillar,.book-gift{--lift:0px}
 
   .char:hover,.door:hover,.phase:hover,.pillar:hover,.pillar.lit,.member:hover .av,
   .orig-art figure:hover .plate,.orig-art figure:hover .plate img,

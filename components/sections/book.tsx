@@ -25,11 +25,11 @@ export function Book() {
     <section className="sec dark book-sec" id="book" aria-labelledby="book-title">
       <div className="wrap">
         <div className="book">
-          <div className="book-head reveal">
+          <div className="sec-head center book-head reveal">
             <WingedHeart />
             <span className="eyebrow book-rule">The Foundational Book</span>
             <h2 id="book-title">Mimoland by the Flying Fairy</h2>
-            <p className="book-tag">The literary heart of the Mimoland universe.</p>
+            <p>The literary heart of the Mimoland universe.</p>
           </div>
 
           <BookAside />
@@ -45,7 +45,9 @@ export function Book() {
             <ul className="book-values reveal">
               {book.values.map((v) => (
                 <li key={v.icon}>
-                  <Icon name={v.icon} />
+                  <span className="ico">
+                    <Icon name={v.icon} />
+                  </span>
                   <p>{v.p}</p>
                 </li>
               ))}
@@ -53,23 +55,23 @@ export function Book() {
 
             {site.welcomePack && (
               <div className="book-gift reveal">
-                <span className="gift-ico">
+                <span className="ico">
                   <Icon name="merchandising" />
                 </span>
                 <h3>A Gift from Mimoland</h3>
                 <p>{book.gift}</p>
                 <a className="btn btn-gold" href={site.welcomePack} download>
                   <Icon name="download" />
-                  <span>
-                    Download your free welcome pack
-                    <span className="sr-only"> (PDF, 2 MB)</span>
-                  </span>
+                  Download Your Free Welcome Pack
+                  <span className="sr-only"> (PDF, 2 MB)</span>
                 </a>
               </div>
             )}
 
             <div className="book-next reveal">
-              <Icon name="publishing" />
+              <span className="ico">
+                <Icon name="publishing" />
+              </span>
               <div>
                 <h3>The Journey Continues</h3>
                 <p>{book.next}</p>

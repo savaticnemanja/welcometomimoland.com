@@ -20,7 +20,6 @@ export type IconName =
   | "heart"
   | "family"
   | "download"
-  | "play"
   | "amazon";
 
 const paths: Record<IconName, ReactNode> = {
@@ -158,7 +157,6 @@ const paths: Record<IconName, ReactNode> = {
       <path d="M4 16.2v2.6a1.6 1.6 0 0 0 1.6 1.6h12.8a1.6 1.6 0 0 0 1.6-1.6v-2.6" />
     </>
   ),
-  play: <path d="M8 5.2v13.6L19 12z" fill="currentColor" />,
   amazon: (
     <>
       <path d="M16.4 5.4v8.9" />

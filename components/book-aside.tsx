@@ -252,7 +252,7 @@ export function BookAside() {
 
         {site.bookTrailerUrl && (
           <a
-            className="btn btn-outline"
+            className="btn btn-ghost"
             href={site.bookTrailerUrl}
             target="_blank"
             rel="noopener"
@@ -264,7 +264,9 @@ export function BookAside() {
               setOpen({ kind: "trailer" });
             }}
           >
-            <Icon name="play" />
+            <svg className="btn-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
             Watch Book Trailer
           </a>
         )}
