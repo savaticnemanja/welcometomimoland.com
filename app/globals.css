@@ -866,6 +866,12 @@ a.trailer:hover .play{
    phone can put it above the cover rather than below it. Everything else is
    the site's own parts — .sec-head, .btn, the Ecosystem's icon tile and card —
    so the layout is the mockup's and the type is the page's. */
+/* The glow behind the cover reaches past a phone's edge: clip, not hidden,
+   so the section is not a scroll container and the sticky column still
+   sticks. No gold hairline over this one; it runs straight on from the
+   Ecosystem. */
+.book-sec{overflow-x:clip}
+.book-sec::before{display:none}
 .book{
   --aside-w:300px;
   --book-gap:calc(var(--sp-9) * 2);
@@ -875,20 +881,6 @@ a.trailer:hover .play{
   column-gap:var(--book-gap);
   position:relative;
 }
-.book::before{
-  content:"";position:absolute;top:0;bottom:0;width:1px;
-  left:calc(var(--aside-w) + var(--book-gap) / 2);
-  background:linear-gradient(180deg,transparent,rgba(var(--gold-rgb),.3) 14%,
-             rgba(var(--gold-rgb),.3) 86%,transparent);
-}
-
-/* A kicker or heading flanked by two gold hairlines. */
-.book-rule{display:flex;align-items:center;justify-content:center;gap:var(--sp-5)}
-.book-rule::before,.book-rule::after{
-  content:"";flex:1 1 0;max-width:110px;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.65));
-}
-.book-rule::after{background:linear-gradient(90deg,rgba(var(--gold-rgb),.65),transparent)}
 
 .book-head{grid-area:head}
 
@@ -896,8 +888,7 @@ a.trailer:hover .play{
 .book-story p{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}
 .book-story p + p{margin-top:var(--sp-4)}
 
-.book .book-values-h{font-size:var(--fs-h3);margin:var(--sp-9) 0 var(--sp-7)}
-.book .book-values-h::before,.book .book-values-h::after{max-width:none}
+.book .book-values-h{font-size:var(--fs-h3);margin:var(--sp-9) 0 var(--sp-6)}
 
 /* The Ecosystem's icon tile, in gold. */
 .book .ico{
@@ -909,12 +900,8 @@ a.trailer:hover .play{
 }
 .book .ico svg{width:23px;height:23px}
 
-.book-values{list-style:none;display:grid;gap:var(--sp-7)}
+.book-values{list-style:none;display:grid;gap:var(--sp-6)}
 .book-values li{display:flex;gap:var(--sp-4);align-items:flex-start;position:relative}
-.book-values li + li::before{
-  content:"";position:absolute;left:0;right:0;top:calc(var(--sp-7) / -2);height:1px;
-  background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.45),transparent);
-}
 .book-values p{color:var(--sky-3);font-size:var(--fs-md);font-weight:300}
 
 /* The Ecosystem's card, lift and all. */
@@ -939,20 +926,18 @@ a.trailer:hover .play{
 .book-gift p{grid-area:p;color:var(--sky-3);font-size:var(--fs-sm);font-weight:300;align-self:start}
 .book-gift .btn{grid-area:btn;text-wrap:balance}
 
-.book-next{
-  display:flex;gap:var(--sp-4);align-items:flex-start;
-  margin-top:var(--sp-8);padding-top:var(--sp-8);position:relative;
-}
-.book-next::before{
-  content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.4) 20%,
-             rgba(var(--gold-rgb),.4) 80%,transparent);
-}
+.book-next{display:flex;gap:var(--sp-4);align-items:flex-start;margin-top:var(--sp-9)}
 .book-next h3{font-size:var(--fs-3xl);margin-bottom:var(--sp-1)}
 .book-next p{color:var(--sky-3);font-size:var(--fs-md);font-weight:300}
 .book-next em{color:var(--sky-2)}
 
-.book-aside{grid-area:aside;align-self:center;display:flex;flex-direction:column}
+/* The book and its ways in ride along while the story scrolls past — but
+   only where the column fits the viewport, or its last button would be
+   unreachable until the section ends. */
+.book-aside{grid-area:aside;align-self:start;display:flex;flex-direction:column}
+@media(min-width:981px) and (min-height:700px){
+  .book-aside{position:sticky;top:calc(var(--head-h) + var(--sp-6))}
+}
 
 .book-art{
   all:unset;display:block;position:relative;
@@ -978,6 +963,20 @@ a.trailer:hover .play{
 .book-ctas .btn{width:100%}
 .book .btn svg{width:17px;height:17px;flex:none}
 .book .btn svg.btn-play{width:13px;height:13px}
+
+/* The trailer gets the film trailer's gold ripple (trailer-ripple), so the
+   page has one way of saying "press play". */
+.book-ctas .btn-trailer{
+  border-color:rgba(var(--gold-rgb),.75);background:rgba(var(--gold-rgb),.1);
+  animation:btn-ripple 2.8s var(--ease-out) infinite;
+}
+.book-ctas .btn-trailer svg{color:var(--gold)}
+.book-ctas .btn-trailer:hover{animation-play-state:paused;border-color:var(--gold)}
+@keyframes btn-ripple{
+  0%{box-shadow:0 0 0 0 rgba(var(--gold-rgb),.6)}
+  70%{box-shadow:0 0 0 16px rgba(var(--gold-rgb),0)}
+  100%{box-shadow:0 0 0 0 rgba(var(--gold-rgb),0)}
+}
 .book-look-note{
   font-size:var(--fs-sm);font-weight:300;color:var(--sky-4);
   text-align:center;margin:calc(var(--sp-1) * -1) 0 var(--sp-2);
@@ -1553,7 +1552,6 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .slate-shelf{max-width:400px;margin-inline:auto}
 
   .book{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "aside" "body";grid-template-rows:none}
-  .book::before{display:none}
   .book-aside{width:100%;max-width:360px;margin:0 auto var(--sp-9)}
   .book-art{width:min(100%,250px)}
 
@@ -1673,8 +1671,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .pillar .ico{width:44px;height:44px;margin-bottom:0}
   .pillar .ico svg{width:23px;height:23px}
 
-  .book-rule{gap:var(--sp-3)}
-  .book .book-values-h{margin:var(--sp-8) 0 var(--sp-6)}
+  .book .book-values-h{margin:var(--sp-8) 0 var(--sp-5)}
 
   .book-gift{
     grid-template-columns:minmax(0,1fr);grid-template-areas:"ico" "h" "p" "btn";
@@ -1726,7 +1723,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
   .reveal{opacity:1 !important;transform:none !important}
 
   .hero-motes,.scroll-cue i::after,.hero-copy h1 .accent,.hero-video.in{animation:none}
-  .trailer.in{animation:none}
+  .trailer.in,.book-ctas .btn-trailer{animation:none}
   .btn-gold::after{display:none}
 
   .pillar,.book-gift{--lift:0px}

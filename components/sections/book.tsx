@@ -8,7 +8,7 @@ export function Book() {
       <div className="wrap">
         <div className="book">
           <div className="sec-head center book-head reveal">
-            <span className="eyebrow book-rule">The Foundational Book</span>
+            <span className="eyebrow">The Foundational Book</span>
             <h2 id="book-title">Mimoland by the Flying Fairy</h2>
             <p>The literary heart of the Mimoland universe.</p>
           </div>
@@ -22,7 +22,7 @@ export function Book() {
               ))}
             </div>
 
-            <h3 className="book-rule book-values-h reveal">A Story to Love, Values to Grow</h3>
+            <h3 className="book-values-h reveal">A Story to Love, Values to Grow</h3>
             <ul className="book-values reveal">
               {book.values.map((v) => (
                 <li key={v.icon}>

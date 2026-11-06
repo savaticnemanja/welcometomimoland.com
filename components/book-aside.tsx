@@ -252,7 +252,7 @@ export function BookAside() {
 
         {site.bookTrailerUrl && (
           <a
-            className="btn btn-ghost"
+            className="btn btn-ghost btn-trailer"
             href={site.bookTrailerUrl}
             target="_blank"
             rel="noopener"
