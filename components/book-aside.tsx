@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "@/components/icons";
 import { Img } from "@/components/img";
@@ -31,7 +31,7 @@ const PAGE_SIZES = `${SPREAD_QUERY} min(44vw, 62vh), min(92vw, 56vh)`;
 
 type Open = { kind: "book"; page: number } | { kind: "trailer" } | null;
 
-export function BookAside() {
+export function BookAside({ children }: { children?: ReactNode }) {
   const [open, setOpen] = useState<Open>(null);
   const [wide, setWide] = useState(false);
   const openerRef = useRef<HTMLElement | null>(null);
@@ -222,9 +222,10 @@ export function BookAside() {
     );
 
   return (
-    <div className="book-aside reveal" data-delay="1">
+    <>
       {/* The cover is a second way into the viewer for pointer users; the
           labelled button below is the one keyboards and screen readers get. */}
+      <div className="book-art-wrap reveal">
       <button
         type="button"
         className="book-art"
@@ -238,8 +239,11 @@ export function BookAside() {
           sizes="(max-width: 980px) 250px, 270px"
         />
       </button>
+      </div>
 
-      <div className="book-ctas">
+      {children}
+
+      <div className="book-ctas reveal">
         <button
           type="button"
           className="btn btn-gold book-look"
@@ -278,6 +282,6 @@ export function BookAside() {
       </div>
 
       {dialog}
-    </div>
+    </>
   );
 }

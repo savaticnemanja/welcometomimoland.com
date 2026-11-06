@@ -13,34 +13,32 @@ export function Book() {
             <p>The literary heart of the Mimoland universe.</p>
           </div>
 
-          <BookAside />
-
-          <div className="book-body">
-            <p className="book-story reveal">{book.story}</p>
-
-            <h3 className="book-values-h reveal">A Story to Love, Values to Grow</h3>
-            <p className="book-values reveal">{book.values}</p>
-
-            {site.welcomePack && (
-              <div className="book-gift reveal">
-                <span className="ico">
-                  <Icon name="merchandising" />
-                </span>
-                <h3>A Gift from Mimoland</h3>
-                <p>{book.gift}</p>
-                <a className="btn btn-gold" href={site.welcomePack} download>
-                  <Icon name="download" />
-                  Download Your Free Welcome Pack
-                  <span className="sr-only"> (PDF, 2 MB)</span>
-                </a>
-              </div>
-            )}
-
-            <div className="book-next reveal">
-              <span className="eyebrow">{book.next.kicker}</span>
-              <h3>{book.next.title}</h3>
-              <p>{book.next.p}</p>
+          {/* Grid order is the mockup's: header, cover, story, then the
+              buttons beside the two cards. */}
+          <BookAside>
+            <div className="book-body reveal">
+              <p className="book-story">{book.story}</p>
+              <h3 className="book-values-h">A Story to Love, Values to Grow</h3>
+              <p className="book-values">{book.values}</p>
             </div>
+          </BookAside>
+
+          {site.welcomePack && (
+            <div className="book-card book-gift reveal">
+              <h3>A Gift from Mimoland</h3>
+              <p>{book.gift}</p>
+              <a className="btn btn-gold" href={site.welcomePack} download>
+                <Icon name="download" />
+                Download Your Free Welcome Pack
+                <span className="sr-only"> (PDF, 2 MB)</span>
+              </a>
+            </div>
+          )}
+
+          <div className="book-card book-next reveal" data-delay="1">
+            <span className="eyebrow">{book.next.kicker}</span>
+            <h3>{book.next.title.replace(": ", ":\n")}</h3>
+            <p>{book.next.p}</p>
           </div>
         </div>
       </div>
