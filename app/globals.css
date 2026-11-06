@@ -885,8 +885,7 @@ a.trailer:hover .play{
 .book-head{grid-area:head}
 
 .book-body{grid-area:body;min-width:0}
-.book-story p{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}
-.book-story p + p{margin-top:var(--sp-4)}
+.book-story{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}
 
 .book .book-values-h{font-size:var(--fs-h3);margin:var(--sp-9) 0 var(--sp-6)}
 
@@ -900,9 +899,7 @@ a.trailer:hover .play{
 }
 .book .ico svg{width:23px;height:23px}
 
-.book-values{list-style:none;display:grid;gap:var(--sp-6)}
-.book-values li{display:flex;gap:var(--sp-4);align-items:flex-start;position:relative}
-.book-values p{color:var(--sky-3);font-size:var(--fs-md);font-weight:300}
+.book-values{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}
 
 /* The Ecosystem's card, lift and all. */
 .book-gift{
@@ -926,10 +923,9 @@ a.trailer:hover .play{
 .book-gift p{grid-area:p;color:var(--sky-3);font-size:var(--fs-sm);font-weight:300;align-self:start}
 .book-gift .btn{grid-area:btn;text-wrap:balance}
 
-.book-next{display:flex;gap:var(--sp-4);align-items:flex-start;margin-top:var(--sp-9)}
-.book-next h3{font-size:var(--fs-3xl);margin-bottom:var(--sp-1)}
-.book-next p{color:var(--sky-3);font-size:var(--fs-md);font-weight:300}
-.book-next em{color:var(--sky-2)}
+.book-next{margin-top:var(--sp-9)}
+.book-next h3{font-size:var(--fs-h3);margin:var(--sp-3) 0 var(--sp-3)}
+.book-next p{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}
 
 /* The book and its ways in ride along while the story scrolls past — but
    only where the column fits the viewport, or its last button would be
@@ -976,10 +972,6 @@ a.trailer:hover .play{
   0%{box-shadow:0 0 0 0 rgba(var(--gold-rgb),.6)}
   70%{box-shadow:0 0 0 16px rgba(var(--gold-rgb),0)}
   100%{box-shadow:0 0 0 0 rgba(var(--gold-rgb),0)}
-}
-.book-look-note{
-  font-size:var(--fs-sm);font-weight:300;color:var(--sky-4);
-  text-align:center;margin:calc(var(--sp-1) * -1) 0 var(--sp-2);
 }
 
 .doors{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-6)}

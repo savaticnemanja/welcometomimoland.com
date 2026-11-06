@@ -17,8 +17,6 @@ export type IconName =
   | "books"
   | "institution"
   | "retail"
-  | "heart"
-  | "family"
   | "download"
   | "amazon";
 
@@ -137,19 +135,6 @@ const paths: Record<IconName, ReactNode> = {
     </>
   ),
 
-  heart: (
-    <path d="M12 20.2S3.2 15 3.2 9.1A4.6 4.6 0 0 1 12 7.3a4.6 4.6 0 0 1 8.8 1.8c0 5.9-8.8 11.1-8.8 11.1z" />
-  ),
-  family: (
-    <>
-      <path d="M12 4.4a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z" />
-      <path d="M6 6.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2z" />
-      <path d="M18 6.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2z" />
-      <path d="M7.4 18.6v-1.8a4.6 4.6 0 0 1 9.2 0v1.8z" />
-      <path d="M5.6 13.4a3.4 3.4 0 0 0-3.4 3.4v1.8h3" />
-      <path d="M18.4 13.4a3.4 3.4 0 0 1 3.4 3.4v1.8h-3" />
-    </>
-  ),
   download: (
     <>
       <path d="M12 3.6v11.2" />

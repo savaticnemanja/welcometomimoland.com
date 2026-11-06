@@ -16,23 +16,10 @@ export function Book() {
           <BookAside />
 
           <div className="book-body">
-            <div className="book-story reveal">
-              {book.story.map((p) => (
-                <p key={p.slice(0, 32)}>{p}</p>
-              ))}
-            </div>
+            <p className="book-story reveal">{book.story}</p>
 
             <h3 className="book-values-h reveal">A Story to Love, Values to Grow</h3>
-            <ul className="book-values reveal">
-              {book.values.map((v) => (
-                <li key={v.icon}>
-                  <span className="ico">
-                    <Icon name={v.icon} />
-                  </span>
-                  <p>{v.p}</p>
-                </li>
-              ))}
-            </ul>
+            <p className="book-values reveal">{book.values}</p>
 
             {site.welcomePack && (
               <div className="book-gift reveal">
@@ -50,13 +37,9 @@ export function Book() {
             )}
 
             <div className="book-next reveal">
-              <span className="ico">
-                <Icon name="publishing" />
-              </span>
-              <div>
-                <h3>The Journey Continues</h3>
-                <p>{book.next}</p>
-              </div>
+              <span className="eyebrow">{book.next.kicker}</span>
+              <h3>{book.next.title}</h3>
+              <p>{book.next.p}</p>
             </div>
           </div>
         </div>

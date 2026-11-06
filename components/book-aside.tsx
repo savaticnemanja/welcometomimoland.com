@@ -248,7 +248,6 @@ export function BookAside() {
           <Icon name="publishing" />
           Look Inside
         </button>
-        <p className="book-look-note">Explore selected pages from the original book.</p>
 
         {site.bookTrailerUrl && (
           <a

@@ -477,29 +477,16 @@ export const mediaKinds: { kind: "news" | "tv"; label: string; icon: IconName }[
 
 // The book section, directly under the Ecosystem.
 export const book = {
-  story: [
-    "Born from a young girl’s dream of flying, this original fairytale takes us to Wish Mountain, where dreams come true, and beyond seven sunlit rainbows to Mimoland, a world that exists alongside our own, high above the clouds and within the journeys of airplanes.",
-    "Here, Fairy becomes the Flying Fairy, a flight attendant with a special mission to bring children from around the world to Mimoland, where human virtues are cherished and shared.",
-    "The Mimos emerge from pillows aboard airplanes, welcoming children with love and kindness, while an ancient tree tells the story of human hearts through its roots and leaves.",
-    "When ZuZu Troll threatens Mimoland, friendship, courage and the choices children make hold the key to restoring harmony.",
-  ],
-  values: [
-    {
-      icon: "heart",
-      p: "Created to help children approach their first flight with curiosity, joy and confidence, the fairytale is also a story for families to share at bedtime and as children prepare for new experiences in life.",
-    },
-    {
-      icon: "family",
-      p: "For parents and educators, it opens conversations about emotions, empathy and self-confidence, nurturing qualities children can carry far beyond their first flight.",
-    },
-  ] as { icon: IconName; p: string }[],
-  gift: "Nine printable Mimocards filled with creativity, kindness and playful discoveries, for little adventures at home or in the sky.",
-  next: (
-    <>
-      The upcoming companion book, <em>Mimoland Activity Book: 17 Sky Missions</em>,
-      extends the fairytale into Mimoland’s edutainment universe.
-    </>
-  ) as ReactNode,
+  story:
+    "Born from a young girl’s dream of flying, this original fairytale takes us to Wish Mountain, where dreams come true, and beyond seven sunlit rainbows to Mimoland, a world that exists alongside our own, high above the clouds and within the journeys of airplanes. Here, Fairy becomes the Flying Fairy, a flight attendant with a special mission: to bring children from around the world to Mimoland, where human virtues are cherished and shared. The Mimos emerge from pillows aboard airplanes, welcoming children with love and kindness, while an ancient tree tells the story of human hearts through its roots and leaves. When ZuZu Troll threatens Mimoland, friendship, courage and the choices children make hold the key to restoring harmony.",
+  values:
+    "Created to help children approach their first flight with curiosity, joy and confidence, the fairytale is also a story for families to share at bedtime and as children prepare for new experiences in life. Rooted in social-emotional learning and peace education, it invites parents and educators to explore emotions, empathy and self-confidence with children, nurturing qualities they can carry far beyond their first flight.",
+  gift: "Nine printable Mimocards filled with creativity, kindness and playful discoveries for little adventures at home or in the sky.",
+  next: {
+    kicker: "Next in the Mimoland Universe",
+    title: "Mimoland Activity Book: 17 Sky Missions",
+    p: "The upcoming companion book extends the fairytale through 17 interactive Sky Missions, bringing Mimoland’s values to life through imagination, creativity, discovery and learning through play.",
+  },
 };
 
 export type BookPage = { image: ImageName; alt: string };
