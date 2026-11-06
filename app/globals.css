@@ -873,7 +873,7 @@ a.trailer:hover .play{
   display:grid;
   grid-template-columns:300px minmax(0,1fr) minmax(0,1fr);
   grid-template-areas:"head head head" "art body body" "ctas gift next";
-  gap:var(--sp-8) var(--sp-9);
+  gap:var(--sp-8) var(--sp-6);
 }
 .book .book-head{grid-area:head;margin-bottom:var(--sp-2)}
 .book-art-wrap{grid-area:art;align-self:center}
@@ -1485,7 +1485,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;back
 
   .pillar{padding:var(--sp-6) var(--sp-5) var(--sp-6)}
 
-  .book{grid-template-columns:260px minmax(0,1fr) minmax(0,1fr);column-gap:var(--sp-7)}
+  .book{grid-template-columns:260px minmax(0,1fr) minmax(0,1fr);column-gap:var(--sp-5)}
 }
 @media(max-width:1080px){
   .doors{gap:var(--sp-4)}
