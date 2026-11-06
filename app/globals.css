@@ -891,8 +891,6 @@ a.trailer:hover .play{
 .book-rule::after{background:linear-gradient(90deg,rgba(var(--gold-rgb),.65),transparent)}
 
 .book-head{grid-area:head}
-.book-orn{display:block;width:58px;height:auto;margin:0 auto var(--sp-3);color:var(--gold);
-  filter:drop-shadow(0 0 12px rgba(var(--gold-rgb),.35))}
 
 .book-body{grid-area:body;min-width:0}
 .book-story p{color:var(--sky-2);font-size:var(--fs-lg);font-weight:300}

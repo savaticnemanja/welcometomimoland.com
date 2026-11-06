@@ -2,31 +2,12 @@ import { BookAside } from "@/components/book-aside";
 import { Icon } from "@/components/icons";
 import { book, site } from "@/content/site";
 
-// The winged heart over the kicker — the Flying Fairy's badge.
-function WingedHeart() {
-  const wing = (
-    <>
-      <path d="M25.4 11.6C19.8 9.6 12.4 10 4 5.2c3.6 5 11.2 8.3 20.6 8.6z" />
-      <path d="M25 15.2c-5 .2-10.6.2-16.8-2.6 3.6 3.8 9.4 5.6 16.2 5.1z" />
-      <path d="M25.6 18.6c-3.7.9-7.6 1.6-12 .7 2.8 2.4 6.6 3.3 11.4 1.9z" />
-    </>
-  );
-  return (
-    <svg className="book-orn" viewBox="0 0 64 26" fill="currentColor" aria-hidden="true">
-      {wing}
-      <g transform="matrix(-1 0 0 1 64 0)">{wing}</g>
-      <path d="M32 24.4c-4.3-3-7.4-5.8-7.4-9.2a3.9 3.9 0 0 1 7.4-1.7 3.9 3.9 0 0 1 7.4 1.7c0 3.4-3.1 6.2-7.4 9.2z" />
-    </svg>
-  );
-}
-
 export function Book() {
   return (
     <section className="sec dark book-sec" id="book" aria-labelledby="book-title">
       <div className="wrap">
         <div className="book">
           <div className="sec-head center book-head reveal">
-            <WingedHeart />
             <span className="eyebrow book-rule">The Foundational Book</span>
             <h2 id="book-title">Mimoland by the Flying Fairy</h2>
             <p>The literary heart of the Mimoland universe.</p>
