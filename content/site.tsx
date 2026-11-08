@@ -20,7 +20,7 @@ export const site = {
   // it in the page.
   bookTrailerUrl: "https://youtu.be/inv9kYUGRLw" as string | null,
   bookTrailerEmbedId: "inv9kYUGRLw" as string | null,
-  welcomePack: "/downloads/mimoland-welcome-pack.pdf" as string | null,
+  welcomePack: "/downloads/mimoland-welcome-pack.pdf?v=2" as string | null,
   deckUrl: null as string | null,
   // The contact handler, served from the same origin by the host nginx
   // (see deploy/). Set to null and the form degrades to a mailto: link
