@@ -105,7 +105,10 @@ do not go through the pipelines above:
   pairs whose artwork crosses the gutter — and the viewer shows spreads when
   the viewport is at least square, single pages otherwise.
 - **`public/downloads/mimoland-welcome-pack.pdf`** is the 12 MB welcome pack
-  through Ghostscript's `/ebook` preset (2 MB). The colouring line art is
+  through Ghostscript's `/ebook` preset (2.4 MB), with
+  `-dAutoFilterGrayImages=false -dGrayImageFilter=/FlateEncode` so the
+  transparency masks stay lossless — JPEG'd masks showed grey squares around
+  the stickers in some viewers. The colouring line art is
   vector and prints as sharp as the original; only the small character
   pictures drop to 150 dpi.
 

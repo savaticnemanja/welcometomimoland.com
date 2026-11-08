@@ -29,8 +29,8 @@ export function Book() {
               <p>{book.gift}</p>
               <a className="btn btn-gold" href={site.welcomePack} download>
                 <Icon name="download" />
-                Download Your Free Welcome Pack
-                <span className="sr-only"> (PDF, 2 MB)</span>
+                Download Your Welcome Pack
+                <span className="sr-only"> (PDF, 2.4 MB)</span>
               </a>
             </div>
           )}
