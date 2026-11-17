@@ -171,6 +171,15 @@ input,textarea{
   cursor:image-set(var(--cursor-text-1x) 1x,var(--cursor-text-2x) 2x) 12 12,text;
 }
 
+/* Firefox scales image-set's 2x pick up by the screen's scale again, so on
+   HiDPI its cursors came out double size. It draws the 24px SVGs sharply on
+   its own, so it gets those alone (the zoom cursor is under .comm-grid). */
+@supports (-moz-appearance:none){
+  html{cursor:var(--cursor-arrow-1x) 4 2,auto}
+  a,button,summary,select,label,[role="button"]{cursor:var(--cursor-hand-1x) 8 1,pointer}
+  input,textarea{cursor:var(--cursor-text-1x) 12 12,text}
+}
+
 @media (forced-colors:active){
   html,a,button,summary,select,label,[role="button"],input,textarea{cursor:auto}
   a,button,summary,select,label,[role="button"]{cursor:pointer}
@@ -1053,6 +1062,10 @@ a.trailer:hover .play{
   all:unset;display:block;width:100%;height:100%;position:relative;
   cursor:var(--cursor-zoom-1x) 10 10,zoom-in;
   cursor:image-set(var(--cursor-zoom-1x) 1x,var(--cursor-zoom-2x) 2x) 10 10,zoom-in;
+}
+
+@supports (-moz-appearance:none){
+  .book-art,.comm-grid button{cursor:var(--cursor-zoom-1x) 10 10,zoom-in}
 }
 
 .comm-grid button:focus-visible{outline:2px solid var(--gold-lift);outline-offset:-4px}
