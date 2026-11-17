@@ -104,13 +104,13 @@ do not go through the pipelines above:
   `bookSpreads` groups them as the book opens — the interior pages are facing
   pairs whose artwork crosses the gutter — and the viewer shows spreads when
   the viewport is at least square, single pages otherwise.
-- **`public/downloads/mimoland-welcome-pack.pdf`** is the 12 MB welcome pack
-  through Ghostscript's `/ebook` preset (2.4 MB), with
-  `-dAutoFilterGrayImages=false -dGrayImageFilter=/FlateEncode` so the
-  transparency masks stay lossless — JPEG'd masks showed grey squares around
-  the stickers in some viewers. The colouring line art is
-  vector and prints as sharp as the original; only the small character
-  pictures drop to 150 dpi.
+- **`public/downloads/mimoland-welcome-pack.pdf`** is the client's original
+  welcome pack exactly as exported from Illustrator (12 MB, 11 pages). Do not
+  recompress it: both Ghostscript passes we tried (`/ebook`, then `/ebook` with
+  lossless masks) still showed grey rectangles around the stickers in some
+  viewers, and the original does not. Cloudflare caches `/downloads/*` for
+  7 days, so a replaced file needs a new `?v=N` on `welcomePack` in
+  `content/site.tsx`.
 
 The viewers render into `document.body` through a portal, so neither the
 reveal transform on the column nor any stacking context in the section can
