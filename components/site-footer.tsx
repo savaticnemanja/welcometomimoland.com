@@ -45,6 +45,17 @@ const marks: Record<string, Mark> = {
       </g>
     ),
   },
+  // FilmFreeway's favicon (a door-like panel in perspective with an F in
+  // it), redrawn as an outline on the same grid and stroke as the others.
+  FilmFreeway: {
+    box: [24, 24],
+    body: (
+      <>
+        <path d="M5 6.4 19 3.2v17.6L5 17.6z" />
+        <path d="M9.6 16V8.8h5.8M9.6 12.5h4" />
+      </>
+    ),
+  },
   IMDb: {
     box: [42, 24],
     body: (
@@ -92,6 +103,7 @@ const socials: { label: string; href: string }[] = [
   { label: "YouTube", href: site.youtube },
   { label: "LinkedIn", href: site.linkedin },
   { label: "IMDb", href: site.imdb },
+  { label: "FilmFreeway", href: site.filmfreeway },
 ].filter((s): s is { label: string; href: string } => Boolean(s.href));
 
 export function SiteFooter() {

@@ -12,6 +12,7 @@ export const site = {
   youtube: "https://www.youtube.com/@welcometomimoland" as string | null,
   linkedin: "https://www.linkedin.com/company/welcome-to-mimoland/" as string | null,
   imdb: "https://www.imdb.com/title/tt44123873/" as string | null,
+  filmfreeway: "https://filmfreeway.com/Mimoland_The_First_Flight" as string | null,
   filmUrl: "https://youtu.be/JfTf3TRLYTU" as string | null,
   filmEmbedId: "JfTf3TRLYTU" as string | null,
   filmTitle: "Mimoland: The First Flight",
