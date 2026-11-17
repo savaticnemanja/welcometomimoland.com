@@ -45,11 +45,11 @@ export type EnquiryType = (typeof enquiryTypes)[number];
 
 export const navLinks = [
   { href: "#origins", label: "Origins" },
+  { href: "#book", label: "Book" },
   // The film itself, centred in view, rather than the top of its section.
   { href: "#film-trailer", label: "Film" },
   { href: "#world", label: "The World" },
   { href: "#ecosystem", label: "Ecosystem" },
-  { href: "#book", label: "Book" },
   { href: "#partners", label: "Partner" },
   { href: "#impact", label: "Impact" },
   { href: "#ip", label: "Slate" },
@@ -482,7 +482,7 @@ export const mediaKinds: { kind: "news" | "tv"; label: string; icon: IconName }[
 // The book section, directly under the Ecosystem.
 export const book = {
   story:
-    "Born from a young girl’s dream of flying, this original fairytale takes us to Wish Mountain, where dreams come true, and beyond seven sunlit rainbows to Mimoland, a world that exists alongside our own, high above the clouds and within the journeys of airplanes. Here, Fairy becomes the Flying Fairy, a flight attendant with a special mission: to bring children from around the world to Mimoland, where human virtues are cherished and shared. The Mimos emerge from pillows aboard airplanes, welcoming children with love and kindness, while an ancient tree tells the story of human hearts through its roots and leaves. When ZuZu Troll threatens Mimoland, friendship, courage and the choices children make hold the key to restoring harmony.",
+    "Every flight carries a child toward two destinations: the one printed on the ticket and the one waiting in a dream. Beyond seven sunlit rainbows, high above the clouds, lies Mimoland, a world hidden within every airplane journey. Here, the Mimos, guardians of the sky, awaken in airplane pillows to accompany children on a route to discovery. Fairy was once a young girl who longed to become a flight attendant. In a dream, Wish Mountain revealed Mimoland to her and entrusted her with a special mission: to open its gates to children everywhere. And so begins their adventure in a land of living dreams and shared virtues. Guided by the wisdom of an ancient tree, the children discover the power of kindness, friendship, and the courage to believe in themselves. When ZuZu Troll threatens the world they have come to love, their bravest act is helping him remember the goodness within himself. Their reward awaits at the summit of Wish Mountain: wings of their own.",
   values:
     "Created to help children approach their first flight with curiosity, joy and confidence, the fairytale is also a story for families to share at bedtime and as children prepare for new experiences in life. Rooted in social-emotional learning and peace education, it invites parents and educators to explore emotions, empathy and self-confidence with children, nurturing qualities they can carry far beyond their first flight.",
   gift: "Nine printable Mimocards filled with creativity, kindness and playful discoveries for little adventures at home or in the sky.",

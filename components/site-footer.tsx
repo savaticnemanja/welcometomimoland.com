@@ -134,10 +134,10 @@ export function SiteFooter() {
           <nav aria-labelledby="foot-explore">
             <h3 id="foot-explore">Explore</h3>
             <a href="#origins">Origins</a>
+            <a href="#book">The Book</a>
             <a href="#film-trailer">The Film</a>
             <a href="#world">The World</a>
             <a href="#ecosystem">Ecosystem</a>
-            <a href="#book">The Book</a>
             <a href="#partners">Partner With Us</a>
             <a href="#impact">Impact</a>
             <a href="#traction">Recognition</a>
