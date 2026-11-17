@@ -9,14 +9,24 @@ export function ScrollUI() {
 
   useEffect(() => {
     const bar = document.querySelector<HTMLElement>(".progress");
+    // A link may point inside a section (Film goes to the trailer), so the
+    // spy tracks the section that holds each link's target.
+    const sectionOf = (href: string) => {
+      const el = document.getElementById(href.slice(1));
+      return el?.closest<HTMLElement>("section") ?? el;
+    };
+
     const anchors = new Map<string, HTMLAnchorElement>();
     document
       .querySelectorAll<HTMLAnchorElement>('.nav-links a[href^="#"]')
-      .forEach((a) => anchors.set(a.getAttribute("href")!.slice(1), a));
+      .forEach((a) => {
+        const s = sectionOf(a.getAttribute("href")!);
+        if (s?.id) anchors.set(s.id, a);
+      });
 
     const sections = navLinks
-      .map((l) => document.getElementById(l.href.slice(1)))
-      .filter((el): el is HTMLElement => Boolean(el));
+      .map((l) => sectionOf(l.href))
+      .filter((el): el is HTMLElement => Boolean(el?.id));
 
     let current = "";
 

@@ -64,7 +64,7 @@ export function SiteHeader() {
   }, [open, close]);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 901px)");
+    const mq = window.matchMedia("(min-width: 1001px)");
     const onChange = () => mq.matches && close();
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);

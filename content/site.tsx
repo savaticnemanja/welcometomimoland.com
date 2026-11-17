@@ -45,8 +45,11 @@ export type EnquiryType = (typeof enquiryTypes)[number];
 
 export const navLinks = [
   { href: "#origins", label: "Origins" },
+  // The film itself, centred in view, rather than the top of its section.
+  { href: "#film-trailer", label: "Film" },
   { href: "#world", label: "The World" },
   { href: "#ecosystem", label: "Ecosystem" },
+  { href: "#book", label: "Book" },
   { href: "#partners", label: "Partner" },
   { href: "#impact", label: "Impact" },
   { href: "#ip", label: "Slate" },
