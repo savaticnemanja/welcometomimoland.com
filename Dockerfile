@@ -76,7 +76,11 @@ ENV HOST=0.0.0.0
 # can never be baked in by accident.
 COPY server/*.mjs ./server/
 
-# The node image ships a `node` user. Nothing here is written to at runtime.
+# The node image ships a `node` user. The one thing it writes is the visit
+# counter's SQLite file in /data (server/analytics.mjs). Created here and
+# owned by `node`, so the named volume compose mounts there starts out
+# writable by it — a fresh named volume takes the image's ownership.
+RUN mkdir -p /data && chown node:node /data
 USER node
 
 EXPOSE 8787

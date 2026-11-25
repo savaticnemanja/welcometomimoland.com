@@ -65,6 +65,32 @@ a push that changes the cache policy takes effect on the next deploy with no
 host-side edit. `public/_headers` is the same policy in Cloudflare Pages
 syntax — keep the two in step.
 
+## Visit counting and /admin
+
+The `api` container also counts visits (`POST /api/collect`) and serves the
+dashboard's API (`/api/admin/*`). The host nginx needs no change for either:
+it sends everything but `/api/contact` to `app`, and the nginx inside `app`
+forwards those two paths to `api` over the compose network
+(`deploy/container-nginx.conf`).
+
+Three things live outside the repo and have to be done on the box once:
+
+1. **The compose file.** `/srv/welcometomimoland.com/docker-compose.yml` is a
+   copy of `deploy/docker-compose.server.yml`, and the deploy hook does not
+   refresh it. Copy the new one over — it adds the named volume `data` for the
+   SQLite file. Without it the counter writes inside the container and the
+   history is lost on every deploy.
+2. **`.env`:** `ADMIN_PASSWORD=…` (the `/admin` sign-in; without it every admin
+   route answers 503) and `TRACKER_API_KEY=…` (the "Report a problem or
+   suggestion" button). Optional: `ADMIN_EMAIL` (shown as the reporter in the
+   tracker), `ADMIN_SESSION_SECRET` (otherwise derived from the password, so a
+   new password signs everyone out).
+3. **Restart:** `docker compose up -d` (or the next push).
+
+The history is the `welcometomimoland_data` volume; `docker compose down -v`
+deletes it. To back it up: `docker run --rm -v welcometomimoland_data:/d -v
+$PWD:/b alpine sh -c "cp /d/analytics.db* /b/"` (the `-wal` file too, while the container runs).
+
 ## Automatic deploys
 
 Push to `main` → `.github/workflows/deploy.yaml` POSTs an HMAC-signed payload

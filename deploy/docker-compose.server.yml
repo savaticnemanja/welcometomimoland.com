@@ -1,7 +1,8 @@
 # welcometomimoland.com — two containers, behind host nginx.
 #
 #   app  127.0.0.1:8088  nginx serving the static export
-#   api  127.0.0.1:8089  the contact handler, POST /api/contact only
+#   api  127.0.0.1:8089  the contact handler (POST /api/contact), visit counting
+#                         (POST /api/collect) and the /admin dashboard's API
 #
 # They are separate on purpose. The site is a Next.js static export and needs
 # no runtime at all; the handler is the one route that cannot be a file. Split
@@ -11,8 +12,10 @@
 # The host nginx is what joins them back into one origin: everything goes to
 # app, and /api/contact goes to api. See deploy/nginx-welcometomimoland.com.conf.
 #
-# No volumes: nothing is written by either. Destroying and recreating loses
-# nothing, which is what makes `up -d --force-recreate` a safe deploy.
+# One volume: `data`, the visit counter's SQLite file in the api container.
+# The site itself still writes nothing, and recreating either container loses
+# nothing — `up -d --force-recreate` stays a safe deploy. Dropping the volume
+# (`docker compose down -v`) is what deletes the visit history.
 
 name: welcometomimoland
 services:
@@ -58,9 +61,17 @@ services:
     ports:
       - "127.0.0.1:8089:8787"
 
-    # Mail credentials. Everything optional defaults to the values in
-    # server/config.mjs, so a .env holding only the API key is a complete
-    # config. Mode 0640 nemanja:developers — the deploy hook runs as `deploy`
+    # The visit counter's database (server/analytics.mjs). A named volume
+    # rather than a bind mount: it takes the image's /data ownership (node),
+    # so nothing on the host needs a chown.
+    volumes:
+      - data:/data
+
+    # Mail credentials, plus ADMIN_PASSWORD (the /admin sign-in) and
+    # TRACKER_API_KEY (its "Report a problem or suggestion" button). Everything
+    # optional defaults to the values in server/config.mjs, so a .env holding
+    # only the Resend key is a complete config — the dashboard just stays shut
+    # (503) until ADMIN_PASSWORD is there. Mode 0640 nemanja:developers — the deploy hook runs as `deploy`
     # and compose cannot read a 0600 file.
     env_file: .env
 
@@ -85,3 +96,6 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+volumes:
+  data:

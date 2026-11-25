@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Img } from "@/components/img";
 import { site } from "@/content/site";
+import { track } from "@/components/track";
 
 export function FilmTrailer() {
   const [playing, setPlaying] = useState(false);
@@ -59,6 +60,7 @@ export function FilmTrailer() {
         if (!site.filmEmbedId) return;
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         e.preventDefault();
+        track("film_trailer");
         setPlaying(true);
       }}
     >

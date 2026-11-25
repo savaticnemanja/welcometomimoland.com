@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { fraunces, inter } from "./fonts";
+import { Analytics } from "@/components/analytics";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         {children}
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { enquiryTypes, site } from "@/content/site";
+import { track } from "@/components/track";
 
 type Errors = { name?: string; email?: string };
 
@@ -120,6 +121,7 @@ export function DeckForm() {
         });
         const payload = await res.json().catch(() => null);
         if (!res.ok) throw new Error(payload?.error ?? String(res.status));
+        track("deck_request", interest);
         setSent("posted");
       } catch (err) {
         // The handler explains refusals in words meant for a visitor, so show
@@ -143,7 +145,14 @@ export function DeckForm() {
   };
 
   return (
-    <form className="deck-form" ref={formRef} onSubmit={onSubmit} noValidate>
+    <form
+      className="deck-form"
+      ref={formRef}
+      onSubmit={onSubmit}
+      // Counted once per visit by the server: how many who start the form send it.
+      onFocus={() => track("deck_form_start")}
+      noValidate
+    >
       <div className="row">
         <div className="field">
           <label htmlFor={`${id}-name`}>Your name</label>

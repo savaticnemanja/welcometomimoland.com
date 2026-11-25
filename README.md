@@ -31,11 +31,42 @@ npm run video    # regenerate public/video from assets/video
 | `assets/` | Source images, video master and logo artboards. Edit these |
 | `public/images/`, `public/video/` | Generated renditions — never edit by hand |
 
-Ten components ship JavaScript: `site-header` (the drawer), `reveal-observer`,
-`scroll-ui` (progress, scroll spy, back-to-top), `pillar-sweep`, `hero-video`,
-`film-trailer`, `count-up`, `gallery` (the photo overlay), `book-aside` (the
-book's Look Inside viewer and trailer player) and `deck-form`. Everything else,
-including every section, renders to static HTML.
+Eleven components ship JavaScript on the landing page: `site-header` (the
+drawer), `reveal-observer`, `scroll-ui` (progress, scroll spy, back-to-top),
+`pillar-sweep`, `hero-video`, `film-trailer`, `count-up`, `gallery` (the photo
+overlay), `book-aside` (the book's Look Inside viewer and trailer player),
+`deck-form` and `analytics` (visit counting, below). Everything else, including
+every section, renders to static HTML. `/admin` is the one client-rendered page.
+
+## Visit counting and the dashboard
+
+The site counts its own visits — no third-party analytics, no cookie, nothing
+in the visitor's browser — and shows them at **`/admin`** (one shared password,
+`ADMIN_PASSWORD` on the server).
+
+- **Collecting:** `components/analytics.tsx` (mounted in the root layout) and
+  `components/track.ts` send small beacons to `POST /api/collect`: a page view,
+  each section once as it crosses the middle of the screen, the actions
+  (`film_trailer`, `book_trailer`, `look_inside`, `welcome_pack`,
+  `gallery_open`, `outbound`, `deck_form_start`, `deck_request`), and on leaving
+  the visible seconds and scroll depth. Nothing is sent with Do Not Track or
+  Global Privacy Control, from an automated browser, or on `/admin`. A new
+  action is a `track("…")` call plus its name in `EVENTS` in
+  `server/analytics.mjs`; a new section is its id in `SECTIONS` in both files.
+- **Storing:** `server/analytics.mjs` in the `api` container, SQLite in `/data`
+  (the compose volume `data`). One visitor on one day is one visit, keyed by a
+  hash of IP + user agent + a salt that exists only for that day; the IP and
+  user agent are never written and old salts are deleted, so days cannot be
+  joined. Raw rows go after 400 days. The privacy notice describes exactly
+  this — keep the two in step.
+- **Showing:** `app/admin/page.tsx` → `components/admin/dashboard.tsx`, numbers
+  from `GET /api/admin/stats` (`server/admin.mjs`). Visitors, page views,
+  median visible time, engaged visits and deck requests against the previous
+  period; visitors over time; how far down the page visitors read, section by
+  section; the deck form funnel; actions; sources (with the deck requests each
+  brought), campaigns, countries, devices, browsers and outbound links.
+- **Report a problem or suggestion:** the dashboard's button files a ticket in
+  the external tracker (`server/tracker.mjs`, `TRACKER_API_KEY`).
 
 ## The token contracts
 

@@ -6,6 +6,7 @@ import { Icon } from "@/components/icons";
 import { Img } from "@/components/img";
 import manifest from "@/content/image-manifest.json";
 import { bookSpreads, site, type BookPage } from "@/content/site";
+import { track } from "@/components/track";
 
 const pages: BookPage[] = bookSpreads.flat();
 
@@ -119,6 +120,7 @@ export function BookAside({ children }: { children?: ReactNode }) {
   }, [view, wide]);
 
   const openBook = (el: HTMLElement) => {
+    track("look_inside");
     openerRef.current = el;
     setOpen({ kind: "book", page: 0 });
   };
@@ -264,6 +266,7 @@ export function BookAside({ children }: { children?: ReactNode }) {
               if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
               e.preventDefault();
               openerRef.current = e.currentTarget;
+              track("book_trailer");
               setOpen({ kind: "trailer" });
             }}
           >

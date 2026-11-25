@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Img } from "@/components/img";
 import { communityImages } from "@/content/site";
+import { track } from "@/components/track";
 
 export function Gallery() {
   const [index, setIndex] = useState<number | null>(null);
@@ -64,6 +65,7 @@ export function Gallery() {
               aria-label={`View larger: ${img.alt}`}
               onClick={(e) => {
                 openerRef.current = e.currentTarget;
+                track("gallery_open");
                 setIndex(i);
               }}
             >

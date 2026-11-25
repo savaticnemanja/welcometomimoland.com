@@ -82,6 +82,39 @@ export const CONFIG = {
 
   // A deck request is three short fields; anything larger is not one.
   maxBodyBytes: num('MAX_BODY_BYTES', 32 * 1024),
+
+  // First-party, cookieless visit counting (server/analytics.mjs). The SQLite
+  // file lives here; in production that is the `data` volume in compose.
+  // Without a writable directory the handler still serves the form and
+  // simply stops counting.
+  dataDir: str('DATA_DIR', '/data'),
+  // Raw visits and events older than this are deleted; the dashboard's
+  // longest range is twelve months, plus one to compare it against.
+  retentionDays: num('RETENTION_DAYS', 400),
+  // A visit beacon is a few hundred bytes; this is generous.
+  maxBeaconBytes: num('MAX_BEACON_BYTES', 4 * 1024),
+
+  admin: {
+    // The dashboard at /admin. Unset, every /api/admin route answers 503 and
+    // there is no way in — counting still happens.
+    password: str('ADMIN_PASSWORD'),
+    // Signs the session cookie. Defaults to one derived from the password, so
+    // changing the password signs everyone out.
+    sessionSecret: str('ADMIN_SESSION_SECRET'),
+    sessionDays: num('ADMIN_SESSION_DAYS', 30),
+    // Five tries in fifteen minutes per IP, twenty in total.
+    loginRate: { max: 5, maxGlobal: 20, windowMs: 15 * 60_000 },
+  },
+
+  // The external tracker (tracker.cirko.dev): the dashboard's "Report a
+  // problem or suggestion" button files a ticket there. Unset, the button
+  // says reporting is not set up.
+  tracker: {
+    apiKey: str('TRACKER_API_KEY'),
+    url: str('TRACKER_URL', 'https://tracker.cirko.dev/api/v1/tickets'),
+    // Optional: who the tracker shows as the reporter of dashboard reports.
+    reporterEmail: str('ADMIN_EMAIL'),
+  },
 };
 
 if (CONFIG.transport === 'resend' && !CONFIG.resend.apiKey) {

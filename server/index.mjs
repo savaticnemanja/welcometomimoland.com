@@ -2,15 +2,19 @@
  * The contact handler for welcometomimoland.com.
  *
  *   POST /api/contact   the deck-request form
+ *   POST /api/collect   cookieless visit counting (analytics.mjs)
+ *   /api/admin/*        the /admin dashboard: sign-in, numbers, reports (admin.mjs)
  *   GET  /healthz       liveness for the reverse proxy and uptime checks
  *
  * It serves no files. The site is a static export served by nginx — both the
  * one inside the site image and the one on the host — so this process exists
- * only for the one route that cannot be a file.
+ * only for the routes that cannot be a file.
  */
 
 import http from 'node:http';
 
+import { adminRoutes } from './admin.mjs';
+import { collect, openAnalytics, prune } from './analytics.mjs';
 import { CONFIG } from './config.mjs';
 import { createMailer } from './mail.mjs';
 import { RateLimiter } from './ratelimit.mjs';
@@ -18,6 +22,9 @@ import { validate } from './validate.mjs';
 
 const log = console;
 const limiter = new RateLimiter(CONFIG.rate);
+// A visit sends a page view, an end beacon and a dozen or so events; a
+// hundred and fifty in ten minutes from one address is not a person reading.
+const beaconLimiter = new RateLimiter({ max: 150, maxGlobal: 20_000, windowMs: 600_000 });
 
 function json(res, status, body, headers = {}) {
   const payload = JSON.stringify(body);
@@ -58,14 +65,14 @@ function originAllowed(req) {
   return CONFIG.allowedOrigins.includes(origin);
 }
 
-function readBody(req) {
+function readBody(req, max = CONFIG.maxBodyBytes) {
   return new Promise((resolve, reject) => {
     const chunks = [];
     let size = 0;
 
     req.on('data', (chunk) => {
       size += chunk.length;
-      if (size > CONFIG.maxBodyBytes) {
+      if (size > max) {
         // Stop reading, but leave the socket alive long enough to answer —
         // destroying it here means the visitor sees a network error rather
         // than the message explaining what happened.
@@ -151,6 +158,29 @@ async function handleContact(req, res, mailer) {
   return json(res, 200, { ok: true });
 }
 
+/**
+ * A beacon from components/analytics.tsx. sendBeacon posts text/plain (no
+ * CORS preflight), so the body is parsed as JSON whatever the type says.
+ * Always 204: the page does not wait on it and learns nothing from it.
+ */
+async function handleCollect(req, res, db) {
+  res.writeHead(204, { 'Cache-Control': 'no-store' });
+  res.end();
+  if (!db || !originAllowed(req)) return;
+  const ip = clientIp(req);
+  if (!beaconLimiter.take(ip).allowed) return;
+  try {
+    const beacon = JSON.parse(await readBody(req, CONFIG.maxBeaconBytes));
+    collect(db, beacon, {
+      ip,
+      ua: String(req.headers['user-agent'] ?? ''),
+      country: String(req.headers['cf-ipcountry'] ?? '').toUpperCase(),
+    });
+  } catch (error) {
+    if (!(error instanceof SyntaxError) && error.status !== 413) log.error(`[analytics] ${error.message}`);
+  }
+}
+
 const server = http.createServer();
 
 const boot = async () => {
@@ -165,11 +195,30 @@ const boot = async () => {
     process.exit(1);
   }
 
+  const db = openAnalytics(log);
+  if (db) {
+    prune(db);
+    setInterval(() => prune(db), 6 * 3600e3).unref();
+  }
+  const admin = adminRoutes({ json, readBody, clientIp, originAllowed, db, log });
+
   server.on('request', (req, res) => {
     const path = (req.url ?? '/').split('?')[0].replace(/\/+$/, '') || '/';
 
     if (req.method === 'GET' && path === '/healthz') {
-      return json(res, 200, { ok: true, transport: CONFIG.transport });
+      return json(res, 200, { ok: true, transport: CONFIG.transport, analytics: !!db });
+    }
+
+    if (path === '/api/collect') {
+      if (req.method === 'POST') return handleCollect(req, res, db);
+      return json(res, 405, { ok: false, error: 'Method not allowed.' }, { Allow: 'POST' });
+    }
+
+    if (path.startsWith('/api/admin/')) {
+      return admin(req, res, path).catch((error) => {
+        log.error(`[admin] ${error.message}`);
+        if (!res.headersSent) json(res, 500, { ok: false, error: 'Something went wrong on our side.' });
+      });
     }
 
     if (path === '/api/contact') {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Brand } from "@/components/brand";
 import { site } from "@/content/site";
 
-const UPDATED = "18 August 2026";
+const UPDATED = "25 November 2026";
 
 export const metadata: Metadata = {
   title: "Privacy Notice — Welcome to Mimoland",
@@ -31,8 +31,9 @@ export default function PrivacyNotice() {
             <h1>Privacy Notice</h1>
             <p className="doc-lede">
               This site is built to need very little from you. It sets no
-              cookies of its own, runs no analytics, and keeps nothing in your
-              browser. What follows is the whole of what happens anyway.
+              cookies on visitors, uses no outside analytics service, and keeps
+              nothing in your browser. It does count its own visits,
+              anonymously. What follows is the whole of what happens.
             </p>
             <p className="doc-date">Last updated {UPDATED}</p>
           </div>
@@ -65,6 +66,38 @@ export default function PrivacyNotice() {
               ordinary server logs — your IP address, the time, the page asked
               for, and your browser's user-agent string — which is how any site
               is delivered and defended at all.
+            </p>
+
+            <h2>Counting visits</h2>
+            <p>
+              The site counts its own visits, on its own server, so we can see
+              how many people come, from where, and which parts of the page they
+              read. No outside analytics service is involved and no cookie is
+              set. To tell one visit from another within a single day, your IP
+              address and your browser's user-agent string are combined with a
+              random value that exists only for that day and turned into a code
+              that cannot be reversed. The IP address and the user-agent string
+              themselves are never stored, and each day's random value is
+              deleted, so visits on different days cannot be linked to each
+              other — by us or by anyone else.
+            </p>
+            <p>
+              What is recorded with that code: the page you arrived on, the
+              site that linked you here (its name only), any campaign tags in
+              the link, your country as Cloudflare reports it, whether you are
+              on a phone, tablet or computer, your browser and operating system
+              family, how long the page was open in front of you and how far
+              down you scrolled, which sections you scrolled to, and whether you
+              played a trailer, opened the book's Look Inside or a gallery
+              photo, downloaded the welcome pack, followed a link to another
+              site, or started and sent the deck request form. The legal ground
+              is our legitimate interest in understanding how the site is used.
+              If your browser sends a Do Not Track or Global Privacy Control
+              signal, nothing is counted at all.
+            </p>
+            <p>
+              The only cookie this site sets is the sign-in cookie of the
+              studio's own dashboard, which visitors never reach.
             </p>
 
             <h2>Watching the trailer</h2>
@@ -115,7 +148,8 @@ export default function PrivacyNotice() {
               has a longer natural life than a one-line question. Email with no
               continuing purpose is deleted within twenty-four months. Server
               and Cloudflare logs are rotated on our providers' own schedules,
-              typically within days.
+              typically within days. Visit counts are deleted after thirteen
+              months.
             </p>
 
             <h2>Who else is involved</h2>
@@ -126,7 +160,7 @@ export default function PrivacyNotice() {
               trailer, and as its own controller rather than on our behalf.
               There is no analytics provider, no advertising network and no
               customer-relationship system in this list, because the site uses
-              none.
+              none: visits are counted by the site itself, on the same host.
             </p>
 
             <h2>Where your data is</h2>
