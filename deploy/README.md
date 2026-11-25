@@ -83,7 +83,7 @@ Three things live outside the repo and have to be done on the box once:
 2. **`.env`:** `ADMIN_PASSWORD=…` (the `/admin` sign-in; without it every admin
    route answers 503) and `TRACKER_API_KEY=…` (the "Report a problem or
    suggestion" button). Optional: `ADMIN_EMAIL` (shown as the reporter in the
-   tracker), `ADMIN_SESSION_SECRET` (otherwise derived from the password, so a
+   tracker; defaults to `MAIL_TO`, since the tracker requires one), `ADMIN_SESSION_SECRET` (otherwise derived from the password, so a
    new password signs everyone out).
 3. **Restart:** `docker compose up -d` (or the next push).
 
