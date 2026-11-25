@@ -144,7 +144,7 @@ export function adminRoutes({ json, readBody, clientIp, originAllowed, db, log =
         description: [message, '', '---', 'From: the Mimoland admin dashboard', page && `Page: ${page}`, ua && `Browser: ${ua}`]
           .filter((l) => l !== false && l !== null && l !== undefined)
           .join('\n'),
-        reporterEmail: CONFIG.tracker.reporterEmail || undefined,
+        reporterEmail: CONFIG.tracker.reporterEmail,
         externalId: `mimoland-report-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
         meta: { app: 'mimoland', type: 'report', kind, path: page, userAgent: ua },
       });

@@ -40,6 +40,7 @@ function list(key, fallback) {
 }
 
 const transport = str('MAIL_TRANSPORT', 'resend');
+const mailTo = str('MAIL_TO', 'partnerships@welcometomimoland.com');
 if (!TRANSPORTS.includes(transport)) {
   throw new Error(`MAIL_TRANSPORT must be one of ${TRANSPORTS.join(', ')} — got "${transport}"`);
 }
@@ -59,7 +60,7 @@ export const CONFIG = {
 
   mail: {
     from: str('MAIL_FROM', 'Mimoland <partnerships@welcometomimoland.com>'),
-    to: str('MAIL_TO', 'partnerships@welcometomimoland.com'),
+    to: mailTo,
     subjectPrefix: str('MAIL_SUBJECT_PREFIX', 'Deck request'),
     // The branded note back to the visitor. Counts a second send against the
     // Resend quota, so it is one flag away from being turned off.
@@ -112,8 +113,11 @@ export const CONFIG = {
   tracker: {
     apiKey: str('TRACKER_API_KEY'),
     url: str('TRACKER_URL', 'https://tracker.cirko.dev/api/v1/tickets'),
-    // Optional: who the tracker shows as the reporter of dashboard reports.
-    reporterEmail: str('ADMIN_EMAIL'),
+    // Who the tracker shows as the reporter of dashboard reports. The tracker
+    // rejects a ticket without a valid reporter email ("Enter a valid
+    // email."), so with ADMIN_EMAIL unset it falls back to the inbox enquiries
+    // go to.
+    reporterEmail: str('ADMIN_EMAIL', mailTo),
   },
 };
 
